@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+  <div class="login">
+    <h2 id='loginHeader'></h2>
+    <form action="#" method="post">
+      <input id='loginField' type="text" name="username" placeholder="" required>
+      <input id='passField' type="password" name="password" placeholder="" required>
+      <input id='submitBtn' type="submit" value="Login">
+    </form>
+  </div>
+
+  <script src="lang/messages/en/user.js"></script>
+  <script>
+            document.title = LOGIN_TITLE;
+            document.getElementById('loginHeader').innerHTML = LOGIN;
+            document.getElementById('loginField').placeholder = USERNAME;
+            document.getElementById('passField').placeholder = PASSWORD;
+            document.getElementById('submitBtn').value = LOGIN;
+    </script>
+</body>
+</html>
