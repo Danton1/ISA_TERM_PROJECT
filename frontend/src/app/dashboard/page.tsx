@@ -1,0 +1,32 @@
+"use client";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useSession, signOut } from "@/lib/auth-client";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+
+export default function DashboardPage() {
+  const router = useRouter();
+  const { data: session, isPending } = useSession();
+
+  useEffect(() => {
+    if (!isPending && !session) router.replace("/login");
+  }, [isPending, session, router]);
+
+  if (isPending) return <div className="p-6">Loading…</div>;
+  if (!session) return null;
+
+  return (
+    <div className="min-h-dvh flex items-center justify-center p-6">
+      <Card className="w-full max-w-sm">
+        <CardHeader>
+          <CardTitle>Dashboard</CardTitle>
+          <CardDescription>Signed in as {session.user.email}</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Button onClick={() => signOut({ redirect: true, redirectTo: "/login" })}>Sign out</Button>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}

@@ -2,14 +2,15 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { signIn } from "@/lib/auth-client";
+import { signUp } from "@/lib/auth-client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-export default function LoginPage() {
+export default function SignupPage() {
   const router = useRouter();
+  const [name, setName] = useState("");
   const [email, setEmail] = useState(""); 
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -17,24 +18,24 @@ export default function LoginPage() {
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-    const { data, error } = await signIn.email({ email, password });
+    const { data, error } = await signUp.email({ name, email, password });
     if (error) return setError(error.message);
     router.push("/dashboard");
   };
-
-  
-  console.log("DATABASE_URL:", process.env.DATABASE_URL);
-  console.log("NEXTAUTH_SECRET:", process.env.NEXTAUTH_SECRET);
 
   return (
     <div className="min-h-dvh flex items-center justify-center p-6">
       <Card className="w-full max-w-sm">
         <CardHeader>
-          <CardTitle>Login</CardTitle>
-          <CardDescription>Welcome back</CardDescription>
+          <CardTitle>Create account</CardTitle>
+          <CardDescription>Sign up with email & password</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={onSubmit} className="space-y-4">
+            <div>
+              <Label htmlFor="name">Name</Label>
+              <Input id="name" value={name} onChange={e=>setName(e.target.value)} required />
+            </div>
             <div>
               <Label htmlFor="email">Email</Label>
               <Input id="email" type="email" value={email} onChange={e=>setEmail(e.target.value)} required />
@@ -44,11 +45,10 @@ export default function LoginPage() {
               <Input id="password" type="password" value={password} onChange={e=>setPassword(e.target.value)} required />
             </div>
             {error && <p className="text-sm text-red-600">{error}</p>}
-            <Button type="submit" className="w-full">Sign in</Button>
+            <Button type="submit" className="w-full">Sign up</Button>
           </form>
-          <div className="mt-4 text-sm flex justify-between">
-            <Link href="/signup" className="underline">Create account</Link>
-            <Link href="/forgot-password" className="underline">Forgot password?</Link>
+          <div className="mt-4 text-sm">
+            <Link href="/login" className="underline">Already have an account?</Link>
           </div>
         </CardContent>
       </Card>
