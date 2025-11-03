@@ -24,11 +24,18 @@ export default function DashboardPage() {
           <CardDescription>Signed in as {session.user.email}</CardDescription>
         </CardHeader>
         <CardContent>
-          <Button onClick={async () => {
+          <div className="flex flex-col gap-4">
+          <Button className="bg-slate-700 text-white hover:bg-slate-600 hover:cursor-pointer"
+            onClick={() => {
+            router.push("/chat");
+            }}>Education Advisor</Button>
+          <Button className="bg-red-700 text-white hover:bg-red-600 hover:cursor-pointer"
+            onClick={async () => {
             // Sign out the user and redirect to login page
             await signOut();
             router.push("/login");
             }}>Sign out</Button>
+            </div>
         </CardContent>
       </Card>
     </div>
