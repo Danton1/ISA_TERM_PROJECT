@@ -24,7 +24,11 @@ export default function DashboardPage() {
           <CardDescription>Signed in as {session.user.email}</CardDescription>
         </CardHeader>
         <CardContent>
-          <Button onClick={() => signOut({ redirect: true, redirectTo: "/login" })}>Sign out</Button>
+          <Button onClick={async () => {
+            // Sign out the user and redirect to login page
+            await signOut();
+            router.push("/login");
+            }}>Sign out</Button>
         </CardContent>
       </Card>
     </div>
