@@ -19,7 +19,7 @@ export default function SignupPage() {
     e.preventDefault();
     setError(null);
     const { data, error } = await signUp.email({ name, email, password });
-    if (error) return setError(error.message);
+    if (error) return setError(error.message ?? "Unable to sign up. Please try again.");
     router.push("/dashboard");
   };
 
