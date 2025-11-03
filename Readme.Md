@@ -1,61 +1,36 @@
-Neon PostgreSQL + Node.js + Frontend Demo
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-A simple full-stack project that connects a JavaScript frontend to a Node.js backend, which communicates with a PostgreSQL database hosted on Neon.
+## Getting Started
 
-🚀 Project Structure
-neon_demo/
-├── backend/
-│ ├── server.js # Main Express server
-│ ├── routes/
-│ │ └── users.js # User API routes
-│ ├── db/
-│ │ └── pool.js # Database connection (Neon)
-│ ├── package.json # Backend dependencies
-│ └── .env # Environment variables (DB URL, port)
-│
-└── frontend/
-├── index.html # UI to interact with the API
-├── script.js # Handles user input and API requests
-└── style.css # Simple UI styling
+First, run the development server:
 
-⚙️ Backend Setup
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-1. Install Dependencies
-   cd backend
-   npm install
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-2. Create a .env file
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-Add your Neon PostgreSQL connection string:
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-DATABASE_URL=postgres://username:password@your-neon-host.neon.tech/neondb
-PORT=3000
+## Learn More
 
-3. Run the Server
-   npm start
+To learn more about Next.js, take a look at the following resources:
 
-or
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-node server.js
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-When you see:
+## Deploy on Vercel
 
-🚀 Server running on port 3000
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-you’re good to go!
-
-🧩 API Endpoints
-Method Endpoint Description
-GET /api/users/init Creates the users table if not already created
-GET /api/users Retrieves all users
-POST /api/users/add Adds a new user (JSON body: { "name": "Parham" })
-🎨 Frontend
-
-The frontend is located in the /frontend folder.
-Open index.html in your browser — it allows you to:
-
-Enter a user name
-
-Add it to the Neon-hosted PostgreSQL database
-
-Display all stored users in real time
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
