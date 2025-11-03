@@ -22,10 +22,6 @@ export default function LoginPage() {
     router.push("/dashboard");
   };
 
-  
-  console.log("DATABASE_URL:", process.env.DATABASE_URL);
-  console.log("NEXTAUTH_SECRET:", process.env.NEXTAUTH_SECRET);
-
   return (
     <div className="min-h-dvh flex items-center justify-center p-6">
       <Card className="w-full max-w-sm">
