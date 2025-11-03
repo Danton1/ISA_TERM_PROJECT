@@ -18,7 +18,7 @@ export default function LoginPage() {
     e.preventDefault();
     setError(null);
     const { data, error } = await signIn.email({ email, password });
-    if (error) return setError(error.message);
+    if (error) return setError(error.message ?? "Unable to sign in. Please try again.");
     router.push("/dashboard");
   };
 
