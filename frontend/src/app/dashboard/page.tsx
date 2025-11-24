@@ -72,6 +72,10 @@ export default function DashboardPage() {
   }
   if (!session) return null;
 
+  const usageNumber = typeof usage === "number" ? usage : 0;
+  const apiUsageColor =
+    usageNumber < 15 ? "text-slate-500" : usageNumber < 20 ? "text-yellow-600" : "text-red-600";
+
   return (
     <div className="min-h-dvh flex items-center justify-center p-6">
       <Card className="w-full max-w-sm">
@@ -80,8 +84,8 @@ export default function DashboardPage() {
           <CardDescription>
             Signed in as {session.user.email}
             <br />
-            <span className="text-sm text-slate-500">
-              Total API Requests: {usage ?? "–"}
+            <span className={`text-sm ${apiUsageColor}`}>
+              {MESSAGES.dashboard.totalApiRequests} {usage ?? "–"}
             </span>
           </CardDescription>
         </CardHeader>
