@@ -25,6 +25,8 @@
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "resend": "^6.4.0",
+    "swagger": "^0.7.5",
+    "swagger-jsdoc": "^6.2.8",
     "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
