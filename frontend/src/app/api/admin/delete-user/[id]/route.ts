@@ -12,12 +12,18 @@
  *         required: true
  *         schema:
  *           type: string
+ *         description: The ID of the user to delete
  *     responses:
  *       200:
  *         description: User deleted successfully.
  *       400:
- *         description: Missing user ID
+ *         description: Missing user ID.
+ *       401:
+ *         description: Not authenticated.
+ *       500:
+ *         description: Failed to delete user (server error).
  */
+
 
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@/lib/generated/prisma";

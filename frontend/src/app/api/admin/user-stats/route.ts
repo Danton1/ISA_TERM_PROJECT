@@ -4,11 +4,11 @@
  *   get:
  *     summary: Get overall system user statistics
  *     tags: [Admin]
- *     security:
- *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: Stats returned.
+ *       500:
+ *         description: Failed to load stats.
  */
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@/lib/generated/prisma";

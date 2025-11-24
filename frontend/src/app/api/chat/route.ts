@@ -6,14 +6,31 @@
  *     tags: [Chat]
  *     security:
  *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - prompt
+ *             properties:
+ *               prompt:
+ *                 type: string
+ *                 description: The message to send to the chatbot.
  *     responses:
  *       200:
  *         description: Chat response generated.
  *       400:
- *         description: Missing 'prompt' (string).
- *      502:
- *         description: Upstream error.
+ *         description: Missing or invalid 'prompt' (string).
+ *       401:
+ *         description: Unauthorized.
+ *       502:
+ *         description: Upstream chatbot service error.
+ *       500:
+ *         description: Internal server error.
  */
+
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@/lib/generated/prisma";
 import { auth } from "@/lib/auth";

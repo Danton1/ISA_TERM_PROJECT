@@ -2,7 +2,7 @@
  * @openapi
  * /api/auth/{all}:
  *   post:
- *     summary: Authentication handler (catch-all route)
+ *     summary: Authentication handler (catch-all route for sign-in, sign-up, sign-out, etc.)
  *     tags: [Auth]
  *     parameters:
  *       - in: path
@@ -10,11 +10,20 @@
  *         required: true
  *         schema:
  *           type: string
- *         description: Sub-path for auth routing.
+ *           description: Catch-all subpath (e.g., "sign-in/email", "sign-up/email", "sign-out").
  *     responses:
  *       200:
- *         description: Auth request processed.
+ *         description: Authentication request processed.
+ *       400:
+ *         description: Bad request (invalid input).
+ *       401:
+ *         description: Unauthorized (invalid credentials or no session).
+ *       409:
+ *         description: Conflict (e.g., user already exists during sign-up).
+ *       500:
+ *         description: Authentication or logging failed due to a server error.
  */
+
 import { auth } from "@/lib/auth";
 import { PrismaClient } from "@/lib/generated/prisma";
 import { toNextJsHandler } from "better-auth/next-js";

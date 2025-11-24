@@ -13,6 +13,8 @@
  *         description: Unauthorized.
  *       404:
  *         description: User not found.
+ *       500:
+ *         description: Internal Server Error.
  */
 import { NextResponse } from "next/server"
 import { PrismaClient } from "@/lib/generated/prisma";
