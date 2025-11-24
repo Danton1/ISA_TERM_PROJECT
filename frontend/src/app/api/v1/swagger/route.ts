@@ -18,7 +18,7 @@
 export const runtime = "nodejs";
 
 import { NextResponse } from "next/server";
-import { swaggerSpec } from "../../../swagger/swagger";
+import { swaggerSpec } from "../../../../swagger/swagger";
 
 export async function GET() {
     return NextResponse.json(swaggerSpec);

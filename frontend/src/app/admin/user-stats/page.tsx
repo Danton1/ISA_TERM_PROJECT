@@ -19,7 +19,7 @@ export default function AdminPage() {
   useEffect(() => {
     async function checkAuth() {
       try {
-        const res = await fetch("/api/admin/me");
+        const res = await fetch("/api/v1/admin/me");
         const data = await res.json();
 
         if (!data.user) {
@@ -28,7 +28,7 @@ export default function AdminPage() {
           setForbidden(true);
         } else {
           // ⬅️ Admin confirmed → Log dashboard view
-          await fetch("/api/admin/log-dashboard-open", {
+          await fetch("/api/v1/admin/log-dashboard-open", {
             method: "POST",
           });
 
@@ -49,7 +49,7 @@ export default function AdminPage() {
 
     async function loadStats() {
       try {
-        const res = await fetch("/api/admin/user-stats");
+        const res = await fetch("/api/v1/admin/user-stats");
         const data = await res.json();
         setStats(data);
       } finally {
@@ -59,7 +59,7 @@ export default function AdminPage() {
 
     async function loadUsers() {
       try {
-        const res = await fetch("/api/admin/users");
+        const res = await fetch("/api/v1/admin/users");
         const data = await res.json();
         setUsers(data);
       } finally {
@@ -74,7 +74,7 @@ export default function AdminPage() {
   async function handleDelete(id: string) {
     if (!confirm("Are you sure you want to delete this user?")) return;
 
-    const res = await fetch(`/api/admin/delete-user/${id}`, {
+    const res = await fetch(`/api/v1/admin/delete-user/${id}`, {
       method: "DELETE",
     });
 
@@ -88,7 +88,7 @@ export default function AdminPage() {
   async function handlePromote(id: string) {
     if (!confirm("Promote this user to admin?")) return;
 
-    const res = await fetch(`/api/admin/promote-user/${id}`, {
+    const res = await fetch(`/api/v1/admin/promote-user/${id}`, {
       method: "PUT",
     });
 

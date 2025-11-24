@@ -17,7 +17,7 @@ export default function AdminPage() {
   useEffect(() => {
     async function checkRole() {
       try {
-        const res = await fetch("/api/admin/me");
+        const res = await fetch("/api/v1/admin/me");
         const data = await res.json();
 
         if (!data.user || data.user.role !== "admin") {
@@ -42,10 +42,10 @@ export default function AdminPage() {
     async function loadStatsAndLog() {
       try {
         // 1️⃣ Call your logging endpoint
-        await fetch("/api/admin/log-dashboard-open", { method: "POST" });
+        await fetch("/api/v1/admin/log-dashboard-open", { method: "POST" });
 
         // 2️⃣ Load endpoint stats
-        const res = await fetch("/api/admin/enpoint-stats");
+        const res = await fetch("/api/v1/admin/enpoint-stats");
         const data = await res.json();
         setStats(data);
       } catch (err) {

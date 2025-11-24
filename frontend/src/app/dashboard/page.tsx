@@ -26,7 +26,7 @@ export default function DashboardPage() {
   useEffect(() => {
     async function checkRole() {
       try {
-        const res = await fetch("/api/admin/me");
+        const res = await fetch("/api/v1/admin/me");
         const data = await res.json();
 
         if (!data.user || data.user.role !== "admin") {
@@ -46,7 +46,7 @@ export default function DashboardPage() {
   useEffect(() => {
     async function loadUsage() {
       try {
-        const res = await fetch("/api/total-usage");
+        const res = await fetch("/api/v1/total-usage");
         const data = await res.json();
         setUsage(data.total_usage);
       } catch {
