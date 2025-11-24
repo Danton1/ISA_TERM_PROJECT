@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -74,8 +75,15 @@ export default function ResetPasswordClient({ token }: Props) {
 
   if (!token && !error) {
     return (
-      <div className="flex min-h-screen items-center justify-center">
-        <p>{MESSAGES.general.loading}</p>
+      <div className="min-h-dvh flex items-center justify-center p-6">
+        <div className="flex items-center gap-3">
+          <div
+            className="h-6 w-6 rounded-full border-4 border-gray-200 border-t-slate-700 animate-spin"
+            role="status"
+            aria-label="loading"
+          />
+          <span className="text-xl text-slate-800">{MESSAGES.general.loading}</span>
+        </div>
       </div>
     );
   }
