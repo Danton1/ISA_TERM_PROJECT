@@ -1,3 +1,4 @@
+// ChatGPT and Copoilot assisted with the proofreading and optimization of this code.
 "use client"
 
 import type React from "react"
@@ -11,7 +12,7 @@ interface ThemeContextProps {
 
 const ThemeContext = createContext<ThemeContextProps>({
   theme: "system",
-  setTheme: () => {},
+  setTheme: () => { },
 })
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {

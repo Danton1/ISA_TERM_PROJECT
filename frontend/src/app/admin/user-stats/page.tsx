@@ -1,3 +1,4 @@
+// ChatGPT and Copoilot assisted with the proofreading and optimization of this code.
 "use client";
 
 import { useEffect, useState } from "react";

@@ -1,3 +1,4 @@
+// ChatGPT and Copoilot assisted with the proofreading and optimization of this code.
 import { resetPassword } from "@/lib/resend";
 import { send } from "process";
 
@@ -21,7 +22,7 @@ export const MESSAGES = {
     sendFailed: "Failed to send password reset email.",
     genericError: "An error occurred while requesting password reset.",
     emailSent: "Password reset link sent to:",
-    sending: "Sending..." ,
+    sending: "Sending...",
     sendReset: "Send Reset Link",
   },
 

@@ -1,3 +1,4 @@
+# ChatGPT and Copoilot assisted with the proofreading and optimization of this code.
 import gradio as gr
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig

@@ -1,3 +1,4 @@
+// ChatGPT and Copoilot assisted with the proofreading and optimization of this code.
 import { createAuthClient } from "better-auth/react";
 import { Resend } from "resend";
 

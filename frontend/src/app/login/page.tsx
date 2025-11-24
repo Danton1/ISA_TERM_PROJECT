@@ -1,3 +1,4 @@
+// ChatGPT and Copoilot assisted with the proofreading and optimization of this code.
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -11,7 +12,7 @@ import { MESSAGES } from "@/constants/lang/messages";
 
 export default function LoginPage() {
   const router = useRouter();
-  const [email, setEmail] = useState(""); 
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
 
@@ -40,13 +41,13 @@ export default function LoginPage() {
           <form onSubmit={onSubmit} className="space-y-4">
             <div>
               <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" value={email} onChange={e=>setEmail(e.target.value)} required />
+              <Input id="email" type="email" value={email} onChange={e => setEmail(e.target.value)} required />
             </div>
             <div>
               <Label htmlFor="password">Password</Label>
-              <Input id="password" type="password" value={password} onChange={e=>setPassword(e.target.value)} required />
+              <Input id="password" type="password" value={password} onChange={e => setPassword(e.target.value)} required />
             </div>
-            {error &&  
+            {error &&
               <p className="text-red-500 text-center">
                 {error === MESSAGES.auth.invalidCredentials ? MESSAGES.auth.invalidCredentials : error}
               </p>

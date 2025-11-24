@@ -1,3 +1,5 @@
+// ChatGPT and Copoilot assisted with the proofreading and optimization of this code.
+
 import express from "express";
 import { pool } from "../db/pool.js";
 

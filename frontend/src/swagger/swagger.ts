@@ -1,4 +1,4 @@
-// We must use require() because swagger-jsdoc is a CommonJS module
+// ChatGPT and Copoilot assisted with the proofreading and optimization of this code.
 const swaggerJsdoc = require("swagger-jsdoc");
 
 export const swaggerSpec = swaggerJsdoc({

@@ -1,3 +1,4 @@
+// ChatGPT and Copoilot assisted with the proofreading and optimization of this code.
 import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { PrismaClient } from "@/lib/generated/prisma";
