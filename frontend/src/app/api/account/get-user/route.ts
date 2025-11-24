@@ -1,3 +1,19 @@
+/**
+ * @openapi
+ * /api/account/get-user:
+ *   get:
+ *     summary: Get the currently authenticated user's details
+ *     tags: [Account]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: User info returned.
+ *       401:
+ *         description: Unauthorized.
+ *       404:
+ *         description: User not found.
+ */
 import { NextResponse } from "next/server"
 import { PrismaClient } from "@/lib/generated/prisma";
 import { auth } from "@/lib/auth";
@@ -15,17 +31,17 @@ export async function GET(req: Request) {
       );
     }
 
-    const userId = session.user.id; 
-    
+    const userId = session.user.id;
+
     const user = await prisma.user.findUnique({
-        where: { id: userId },
+      where: { id: userId },
       select: {
         name: true,
         email: true,
       },
     })
 
-     if (!user) {
+    if (!user) {
       return NextResponse.json({ error: "User not found" }, { status: 404 })
     }
 

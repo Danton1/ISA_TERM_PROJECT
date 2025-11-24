@@ -1,6 +1,22 @@
+/**
+ * @openapi
+ * /api/chat:
+ *   post:
+ *     summary: Send a chat request/message
+ *     tags: [Chat]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Chat response generated.
+ *       400:
+ *         description: Missing 'prompt' (string).
+ *      502:
+ *         description: Upstream error.
+ */
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@/lib/generated/prisma";
-import { auth } from "@/lib/auth";       
+import { auth } from "@/lib/auth";
 
 const prisma = new PrismaClient();
 
@@ -12,7 +28,7 @@ const CHATBOT_URL =
 
 export async function POST(req: Request) {
   try {
-  
+
     // -----------------------------
     // GET SESSION → USER ID
     // -----------------------------
@@ -25,7 +41,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const userId = session.user.id; 
+    const userId = session.user.id;
 
     const { prompt } = await req.json();
 

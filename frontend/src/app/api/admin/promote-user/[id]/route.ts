@@ -1,3 +1,32 @@
+/**
+ * @openapi
+ * /api/admin/promote-user/{id}:
+ *   put:
+ *     summary: Promote a user by ID
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: User promoted.
+ *       400:
+ *         description: You cannot promote yourself.
+ *       400:
+ *         description: Missing user ID.
+ *       401:
+ *         description: Unauthorized: no session.
+ *       402:
+ *       description: You cannot promote yourself.
+ *       500:
+ *         description: Promotion failed.
+ */
+
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@/lib/generated/prisma";
 import { auth } from "@/lib/auth"; // needed to detect WHO is promoting
@@ -37,7 +66,7 @@ export async function PUT(
     if (actingUserId === id) {
       return NextResponse.json(
         { error: "You cannot promote yourself." },
-        { status: 400 }
+        { status: 402 }
       );
     }
 

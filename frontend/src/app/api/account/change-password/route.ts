@@ -1,3 +1,30 @@
+/**
+ * @openapi
+ * /api/account/change-password:
+ *   patch:
+ *     summary: Change the user's password
+ *     tags: [Account]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               oldPassword:
+ *                 type: string
+ *               newPassword:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Password changed successfully.
+ *       400:
+ *        description: Password must be at least 6 characters.
+ *       401:
+ *         description: Unauthorized.
+ */
 import { NextResponse } from "next/server"
 import { PrismaClient } from "@/lib/generated/prisma";
 import { auth } from "@/lib/auth"
@@ -16,7 +43,7 @@ export async function PATCH(req: Request) {
       );
     }
 
-    const userId = session.user.id; 
+    const userId = session.user.id;
     const body = await req.json()
     const { password } = body
 

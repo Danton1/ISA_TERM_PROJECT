@@ -1,3 +1,16 @@
+/**
+ * @openapi
+ * /api/user-chat-usage:
+ *   get:
+ *     summary: Get the authenticated user's chat usage statistics
+ *     tags: [Usage]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Usage stats returned.
+ */
+
 import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { PrismaClient } from "@/lib/generated/prisma";
