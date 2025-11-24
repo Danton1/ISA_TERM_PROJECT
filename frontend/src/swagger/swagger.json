@@ -21,7 +21,7 @@
         }
     },
     "paths": {
-        "/api/account/change-name": {
+        "/api/v1/account/change-name": {
             "patch": {
                 "tags": [
                     "Account"
@@ -54,7 +54,7 @@
                 }
             }
         },
-        "/api/account/change-password": {
+        "/api/v1/account/change-password": {
             "patch": {
                 "tags": [
                     "Account"
@@ -90,7 +90,7 @@
                 }
             }
         },
-        "/api/account/get-user": {
+        "/api/v1/account/get-user": {
             "get": {
                 "tags": [
                     "Account"
@@ -108,7 +108,7 @@
                 }
             }
         },
-        "/api/admin/delete-user/{id}": {
+        "/api/v1/admin/delete-user/{id}": {
             "delete": {
                 "tags": [
                     "Admin"
@@ -139,7 +139,7 @@
                 }
             }
         },
-        "/api/admin/enpoint-stats": {
+        "/api/v1/admin/enpoint-stats": {
             "get": {
                 "tags": [
                     "Admin"
@@ -157,7 +157,7 @@
                 }
             }
         },
-        "/api/admin/log-dashboard-open": {
+        "/api/v1/admin/log-dashboard-open": {
             "post": {
                 "tags": [
                     "Admin"
@@ -175,7 +175,7 @@
                 }
             }
         },
-        "/api/admin/me": {
+        "/api/v1/admin/me": {
             "get": {
                 "tags": [
                     "Admin"
@@ -193,7 +193,7 @@
                 }
             }
         },
-        "/api/admin/promote-user/{id}": {
+        "/api/v1/admin/promote-user/{id}": {
             "put": {
                 "tags": [
                     "Admin"
@@ -221,7 +221,7 @@
                 }
             }
         },
-        "/api/admin/user-stats": {
+        "/api/v1/admin/user-stats": {
             "get": {
                 "tags": [
                     "Admin"
@@ -239,7 +239,7 @@
                 }
             }
         },
-        "/api/admin/users": {
+        "/api/v1/admin/users": {
             "get": {
                 "tags": [
                     "Admin"
@@ -257,7 +257,7 @@
                 }
             }
         },
-        "/api/auth/{all}": {
+        "/api/v1/auth/{all}": {
             "post": {
                 "tags": [
                     "Auth"
@@ -281,7 +281,7 @@
                 }
             }
         },
-        "/api/chat": {
+        "/api/v1/chat": {
             "post": {
                 "tags": [
                     "Chat"
@@ -299,7 +299,7 @@
                 }
             }
         },
-        "/api/user-chat-usage": {
+        "/api/v1/user-chat-usage": {
             "get": {
                 "tags": [
                     "Usage"
@@ -317,7 +317,7 @@
                 }
             }
         },
-        "/api/swagger": {
+        "/api/v1/swagger": {
             "get": {
                 "tags": [
                     "Internal"
@@ -330,7 +330,7 @@
                 }
             }
         },
-        "/api/swagger-ui": {
+        "/api/v1/swagger-ui": {
             "get": {
                 "tags": [
                     "Internal"
