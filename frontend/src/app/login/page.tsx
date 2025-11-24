@@ -1,9 +1,9 @@
 // ChatGPT and Copoilot assisted with the proofreading and optimization of this code.
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { signIn } from "@/lib/auth-client";
+import { signIn, useSession } from "@/lib/auth-client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -12,21 +12,31 @@ import { MESSAGES } from "@/constants/lang/messages";
 
 export default function LoginPage() {
   const router = useRouter();
+  const { data: session } = useSession();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
 
+  useEffect(() => {
+    if (session?.user) {
+      // If already signed in, send to dashboard
+      router.replace("/dashboard");
+    }
+  }, [session, router]);
+
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-    const { data, error } = await signIn.email({ email, password });
+  const { error } = await signIn.email({ email, password });
     if (error) {
       if (error.message === MESSAGES.auth.invalidCredentials) {
         setError(MESSAGES.auth.invalidCredentials);
       } else {
         setError(MESSAGES.auth.signInFailed);
       }
-    };
+      return;
+    }
+    // sign in successful
     router.push("/dashboard");
   };
 

@@ -1,9 +1,9 @@
 // ChatGPT and Copoilot assisted with the proofreading and optimization of this code.
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { signUp } from "@/lib/auth-client";
+import { signUp, useSession } from "@/lib/auth-client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -12,10 +12,17 @@ import { MESSAGES } from "@/constants/lang/messages";
 
 export default function SignupPage() {
   const router = useRouter();
+  const { data: session } = useSession();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (session?.user) {
+      router.replace("/dashboard");
+    }
+  }, [session, router]);
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,7 +31,7 @@ export default function SignupPage() {
       setError(MESSAGES.auth.passwordTooShort);
       return;
     }
-    const { data, error } = await signUp.email({ name, email, password });
+  const { error } = await signUp.email({ name, email, password });
     if (error) {
       const raw = (error.message || "").toLowerCase();
       if (raw.includes("already") && raw.includes("email")) {
