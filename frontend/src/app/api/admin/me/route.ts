@@ -15,7 +15,7 @@
  *               properties:
  *                 user:
  *                   oneOf:
- *                     - $ref: '#/components/schemas/AdminUser'
+ *                     - type: object
  *                     - type: 'null'
  */
 
