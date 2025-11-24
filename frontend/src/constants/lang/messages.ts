@@ -40,7 +40,7 @@ export const MESSAGES = {
       "Hi! I’m your education advisor. Ask me anything! e.g. “What degree do I need to become a data scientist?”",
     requestFailedMsg:
       "Sorry! Something went wrong talking to the advisor. Please try again.",
-    usagePrefix: "Total API Usage:",
+    usagePrefix: "Total Chatbot API Usage:",
     limitExceeded: "⚠️ You have exceeded the free 20-message limit.",
     suggestion1: "What degree do I need to become a data scientist?",
     suggestion2: "Which courses help me transition into ML engineering?",
