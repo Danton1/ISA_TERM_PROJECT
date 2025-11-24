@@ -1,3 +1,20 @@
+/**
+ * @openapi
+ * /api/auth/{all}:
+ *   post:
+ *     summary: Authentication handler (catch-all route)
+ *     tags: [Auth]
+ *     parameters:
+ *       - in: path
+ *         name: all
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Sub-path for auth routing.
+ *     responses:
+ *       200:
+ *         description: Auth request processed.
+ */
 import { auth } from "@/lib/auth";
 import { PrismaClient } from "@/lib/generated/prisma";
 import { toNextJsHandler } from "better-auth/next-js";
@@ -88,7 +105,7 @@ export async function POST(req: Request) {
 
   if (pathname.endsWith("/forget-password")) {
     await logApiCall(userId, "PUT", "/api/auth/update-password");
-}
+  }
 
   return response;
 }

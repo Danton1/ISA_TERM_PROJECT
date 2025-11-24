@@ -1,3 +1,27 @@
+/**
+ * @openapi
+ * /api/account/change-name:
+ *   patch:
+ *     summary: Change the logged-in user's name
+ *     tags: [Account]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Name updated successfully.
+ *       400:
+ *         description: Name is required
+ */
+
 import { NextResponse } from "next/server"
 import { PrismaClient } from "@/lib/generated/prisma";
 import { auth } from "@/lib/auth";
@@ -15,7 +39,7 @@ export async function PATCH(req: Request) {
       );
     }
 
-    const userId = session.user.id; 
+    const userId = session.user.id;
     const body = await req.json()
     const { name } = body
 
@@ -40,3 +64,4 @@ export async function PATCH(req: Request) {
     )
   }
 }
+

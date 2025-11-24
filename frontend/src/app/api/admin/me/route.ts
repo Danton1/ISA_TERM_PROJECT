@@ -1,3 +1,16 @@
+/**
+ * @openapi
+ * /api/admin/me:
+ *   get:
+ *     summary: Get the current a user's profile
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Admin info returned.
+ */
+
 import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { PrismaClient } from "@/lib/generated/prisma";

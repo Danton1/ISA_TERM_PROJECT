@@ -1,3 +1,15 @@
+/**
+ * @openapi
+ * /api/admin/enpoint-stats:
+ *   get:
+ *     summary: Get endpoint usage/performance statistics
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Stats returned.
+ */
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@/lib/generated/prisma";
 

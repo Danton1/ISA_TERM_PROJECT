@@ -1,3 +1,17 @@
+/**
+ * @openapi
+ * /api/admin/log-dashboard-open:
+ *   post:
+ *     summary: Log when an admin dashboard is opened
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Log entry stored.
+ *       500:
+ *         description: Logging failed.
+ */
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@/lib/generated/prisma";
 import { auth } from "@/lib/auth";

@@ -1,3 +1,15 @@
+/**
+ * @openapi
+ * /api/admin/user-stats:
+ *   get:
+ *     summary: Get overall system user statistics
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Stats returned.
+ */
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@/lib/generated/prisma";
 

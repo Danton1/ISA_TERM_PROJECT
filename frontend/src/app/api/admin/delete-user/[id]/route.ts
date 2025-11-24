@@ -1,3 +1,24 @@
+/**
+ * @openapi
+ * /api/admin/delete-user/{id}:
+ *   delete:
+ *     summary: Permanently delete a user by ID
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: User deleted successfully.
+ *       400:
+ *         description: Missing user ID
+ */
+
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@/lib/generated/prisma";
 import { auth } from "@/lib/auth";
