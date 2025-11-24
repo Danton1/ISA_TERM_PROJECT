@@ -2,13 +2,20 @@
  * @openapi
  * /api/user-chat-usage:
  *   get:
- *     summary: Get the authenticated user's chat usage statistics
+ *     summary: Get the authenticated user's chat usage statistics (returns 0 if not logged in)
  *     tags: [Usage]
- *     security:
- *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: Usage stats returned.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 count:
+ *                   type: number
+ *       500:
+ *         description: Server error.
  */
 
 import { NextResponse } from "next/server";

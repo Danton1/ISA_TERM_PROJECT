@@ -13,9 +13,7 @@
  *           schema:
  *             type: object
  *             properties:
- *               oldPassword:
- *                 type: string
- *               newPassword:
+ *               password:
  *                 type: string
  *     responses:
  *       200:

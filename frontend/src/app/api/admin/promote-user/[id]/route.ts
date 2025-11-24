@@ -12,19 +12,18 @@
  *         required: true
  *         schema:
  *           type: string
+ *         description: The ID of the user to promote.
  *     responses:
  *       200:
- *         description: User promoted.
- *       400:
- *         description: You cannot promote yourself.
+ *         description: User promoted successfully.
  *       400:
  *         description: Missing user ID.
  *       401:
  *         description: Unauthorized: no session.
  *       402:
- *       description: You cannot promote yourself.
+ *         description: You cannot promote yourself.
  *       500:
- *         description: Promotion failed.
+ *         description: Promotion failed due to server error.
  */
 
 import { NextResponse } from "next/server";

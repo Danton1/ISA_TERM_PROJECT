@@ -4,11 +4,11 @@
  *   get:
  *     summary: Get endpoint usage/performance statistics
  *     tags: [Admin]
- *     security:
- *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: Stats returned.
+ *       500:
+ *         description: Server error.
  */
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@/lib/generated/prisma";

@@ -4,11 +4,11 @@
  *   get:
  *     summary: List all platform users
  *     tags: [Admin]
- *     security:
- *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: User list returned.
+ *       500:
+ *         description: Failed to load users.
  */
 
 import { NextResponse } from "next/server";

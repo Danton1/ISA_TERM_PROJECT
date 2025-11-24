@@ -2,13 +2,20 @@
  * @openapi
  * /api/admin/me:
  *   get:
- *     summary: Get the current a user's profile
+ *     summary: Get the current user's profile (or null if not authenticated)
  *     tags: [Admin]
- *     security:
- *       - bearerAuth: []
  *     responses:
  *       200:
- *         description: Admin info returned.
+ *         description: User info or null returned.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 user:
+ *                   oneOf:
+ *                     - $ref: '#/components/schemas/AdminUser'
+ *                     - type: 'null'
  */
 
 import { NextResponse } from "next/server";

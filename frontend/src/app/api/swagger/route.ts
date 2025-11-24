@@ -7,6 +7,11 @@
  *     responses:
  *       200:
  *         description: Swagger spec returned.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               description: The full OpenAPI specification.
  */
 
 export const runtime = "nodejs";
