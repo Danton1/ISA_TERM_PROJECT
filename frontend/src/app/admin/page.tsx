@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { MESSAGES } from "@/constants/lang/messages";
 
 export default function AdminPage() {
   const [stats, setStats] = useState<any[]>([]);
@@ -62,13 +63,13 @@ export default function AdminPage() {
   if (isAdmin === false) {
     return (
       <div className="p-8 text-center text-red-600 text-2xl font-bold">
-        ❌ Access Denied — Admin Only
+        {MESSAGES.admin.accessDenied}
       </div>
     );
   }
 
   if (isAdmin === null || loadingStats) {
-    return <p className="p-8 text-center">Checking permissions…</p>;
+    return <p className="p-8 text-center">{MESSAGES.admin.checkingPermissions}</p>;
   }
 
   // ============================================================

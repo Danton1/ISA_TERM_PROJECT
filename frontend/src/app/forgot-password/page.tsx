@@ -13,7 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { forgetPassword } from "@/lib/auth-client";
 import Link from "next/link";
-
+import { MESSAGES } from "@/constants/lang/messages"; 
 import { useState } from "react";
 
 export default function ForgotPasswordPage() {
@@ -35,14 +35,18 @@ export default function ForgotPasswordPage() {
       });
 
       if (result.error) {
-        setError(result.error.message || "Failed to send reset email");
+        const raw = (result.error.message || "").toLowerCase();
+        const msg = raw 
+          ? MESSAGES.forgotPassword.sendFailed 
+          : MESSAGES.forgotPassword.genericError;
+        setError(msg);
       } else {
         setSuccess(true);
-        console.log("Password reset email sent to:", email);
+        console.log(MESSAGES.forgotPassword.emailSent, email);
       }
     } catch (err) {
-      setError("An error occurred. Please try again.");
       console.error("Forgot password error:", err);
+      setError(MESSAGES.forgotPassword.genericError);
     } finally {
       setLoading(false);
     }
@@ -62,9 +66,7 @@ export default function ForgotPasswordPage() {
             <div className="space-y-4">
               <Alert>
                 <AlertDescription>
-                  Password reset link has been sent to your email. Check the
-                  console for the reset URL (in production, this would be sent
-                  via email).
+                  {MESSAGES.forgotPassword.emailSentAlert}
                 </AlertDescription>
               </Alert>
               <Button
@@ -94,7 +96,7 @@ export default function ForgotPasswordPage() {
                 </div>
               )}
               <Button type="submit" className="w-full" disabled={loading}>
-                {loading ? "Sending..." : "Send Reset Link"}
+                {loading ? MESSAGES.forgotPassword.sending : MESSAGES.forgotPassword.sendReset}
               </Button>
               <Button
                 asChild

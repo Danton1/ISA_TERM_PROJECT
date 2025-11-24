@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { MESSAGES } from "@/constants/lang/messages";
 
 export default function AdminPage() {
   const [stats, setStats] = useState<any[]>([]);
@@ -77,7 +78,7 @@ export default function AdminPage() {
     if (res.ok) {
       setUsers((prev) => prev.filter((u) => u.id !== id));
     } else {
-      alert("Failed to delete user.");
+      alert(MESSAGES.admin.deleteUserFailed);
     }
   }
 
@@ -94,19 +95,19 @@ export default function AdminPage() {
         prev.map((u) => (u.id === id ? { ...u, role: "admin" } : u))
       );
     } else {
-      alert("Failed to promote user.");
+      alert(MESSAGES.admin.promoteUserFailed);
     }
   }
 
   if (authLoading) {
-    return <p className="p-8 text-center">Checking access…</p>;
+    return <p className="p-8 text-center">{MESSAGES.admin.checkingAccess}</p>;
   }
 
   if (forbidden) {
     return (
       <div className="p-8 max-w-3xl mx-auto">
         <div className="bg-red-100 border border-red-400 text-red-700 px-6 py-4 rounded-lg text-center text-lg font-medium">
-          🚫 Access Denied — Only administrators can view this page.
+          {MESSAGES.admin.onlyAdmins}
         </div>
       </div>
     );

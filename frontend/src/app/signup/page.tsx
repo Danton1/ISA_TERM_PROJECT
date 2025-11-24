@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { MESSAGES } from "@/constants/lang/messages";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -18,8 +19,19 @@ export default function SignupPage() {
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
+    if (password.length < 8) {
+      setError(MESSAGES.auth.passwordTooShort);
+      return;
+    }
     const { data, error } = await signUp.email({ name, email, password });
-    if (error) return setError(error.message ?? "Unable to sign up. Please try again.");
+    if (error) {
+      const raw = (error.message || "").toLowerCase();
+      if (raw.includes("already") && raw.includes("email")) {
+        setError(MESSAGES.auth.emailInUse);
+      } else {
+        return setError(error.message ?? MESSAGES.auth.signUpFailed);
+      }
+    }
     router.push("/dashboard");
   };
 
