@@ -1,4 +1,7 @@
-import torch,datasets
+import os
+import torch
+import glob
+import pandas as pd
 from datasets import load_dataset, Dataset
 from transformers import (
     AutoTokenizer,
@@ -7,54 +10,45 @@ from transformers import (
 )
 from trl import SFTTrainer
 from peft import LoraConfig, get_peft_model
+
+# Disable bitsandbytes entirely (Windows fix)
+os.environ["BITSANDBYTES_NOWELCOME"] = "1"
+os.environ["BITSANDBYTES_DISABLE"] = "1"
+os.environ["PEFT_BACKEND"] = "torch"  # ensure PEFT uses torch backend
+
 torch.backends.cuda.matmul.allow_tf32 = True
+import datasets
 datasets.logging.set_verbosity_error()
 
-# ChatGPT was used in to help generate this code
 
 # ============================================================
 # CONFIGURATION
 # ============================================================
-CSV_PATH = r"D:\gigsup\education_model\98100404.csv"   # 36 GB dataset
-BASE_MODEL = "google/gemma-2b"                        # or "google/gemma-2-2b"
-OUTPUT_DIR = "ft-gemma-2b-edu-qlora"             # output folder for adapter
-MAX_STEPS = 2000                                      # optional cap for testing
+CSV_PATH = r"D:\gigsup\education_model\career_skill_training.csv"   # your dataset
+BASE_MODEL = "google/gemma-2b"
+OUTPUT_DIR = "ft-gemma-2b-edu-qlora"                   # output folder for adapter
 # ============================================================
 
 # 1️⃣ Load tokenizer
 tok = AutoTokenizer.from_pretrained(BASE_MODEL)
 tok.pad_token = tok.eos_token
+tok.padding_side = "right"
 
-# 2️⃣ Load CSV with streaming enabled
-# This keeps memory usage small even for 36 GB
-stream = load_dataset("csv", data_files=CSV_PATH, streaming=True)
-rows = list(stream["train"].take(50000))
-dataset = Dataset.from_list(rows)
+# 2️⃣ Load CSV dataset
+train_dataset = Dataset.load_from_disk(r"D:\gigsup\education_model\career_tokenized_combined")
+train_dataset = train_dataset.shuffle(seed=42)
+print(train_dataset.column_names)
+sample = train_dataset[0]
+print(len(sample["input_ids"]))
+print(len(sample["labels"]))
+print(sample["labels"][:50])
 
-# If your CSV has columns like instruction, input, output:
-def format_row(row):
-    instr = row.get("instruction", "")
-    inp = row.get("input", "")
-    out = row.get("output", "")
-    return {
-        "text": f"### Instruction:\n{instr}\n\n### Input:\n{inp}\n\n### Response:\n{out}"
-    }
+# print(f"Length of Training set: {len(dataset)}")
 
-
-# Apply formatting lazily
-dataset = dataset.map(format_row)
-train_dataset = dataset.shuffle(seed=42)
-
-# 3️⃣ Load Gemma base model in 4-bit (QLoRA-ready)
-# bnb = BitsAndBytesConfig(
-#     load_in_4bit=True,
-#     bnb_4bit_quant_type="nf4",
-#     bnb_4bit_compute_dtype=torch.bfloat16 if torch.cuda.is_available() else torch.float16,
-# )
-
+# 3️⃣ Load base Gemma model (full precision)
 model = AutoModelForCausalLM.from_pretrained(
     BASE_MODEL,
-    torch_dtype=torch.float16,
+    torch_dtype=torch.bfloat16,
     device_map="auto",
 )
 
@@ -69,32 +63,37 @@ peft_cfg = LoraConfig(
     ],
 )
 model = get_peft_model(model, peft_cfg)
+model.to(torch.bfloat16)
+model.train()
+model.peft_config["default"].inference_mode = False
+model.print_trainable_parameters()
 
-# 5️⃣ Training setup
+# 5️⃣ Training setup — no bitsandbytes
 args = TrainingArguments(
     output_dir=OUTPUT_DIR,
-    per_device_train_batch_size=1,     # keep small for streaming
-    gradient_accumulation_steps=8,
+    per_device_train_batch_size=4,
+    gradient_accumulation_steps=4,
     learning_rate=2e-4,
-    num_train_epochs=1,
-    bf16=torch.cuda.is_bf16_supported(),
+    num_train_epochs=2,
+    fp16=False,
+    bf16=True,
+    warmup_ratio=0.05,
+    max_grad_norm=1.0,
     logging_steps=25,
-    save_strategy="steps",
-    save_steps=500,
-    max_steps=MAX_STEPS,               # remove for full epoch training
-    report_to="none",                  # disable W&B if not needed
-
+    save_strategy="epoch",
+    save_total_limit=2,
+    report_to="none",
+    optim="adamw_torch",   # ✅ normal PyTorch AdamW
 )
 
-# 6️⃣ Trainer (supports iterable datasets)
+# 6️⃣ Trainer
 trainer = SFTTrainer(
     model=model,
     tokenizer=tok,
     train_dataset=train_dataset,
-    dataset_text_field="text",
     args=args,
-    max_seq_length=1024,
-    packing=False,
+    max_seq_length=160,
+    packing=True,
 )
 
 # 7️⃣ Train
