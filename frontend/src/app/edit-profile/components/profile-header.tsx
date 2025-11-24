@@ -12,7 +12,7 @@ export function ProfileHeader() {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await fetch("/api/account/get-user")
+      const res = await fetch("/api/v1/account/get-user")
       const data = await res.json()
       setUser(data)
     }

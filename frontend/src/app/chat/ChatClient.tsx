@@ -46,7 +46,7 @@ export default function ChatClient() {
     setLoading(true);
 
     try {
-      const r = await fetch("/api/chat", {
+      const r = await fetch("/api/v1/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ prompt }),
@@ -83,7 +83,7 @@ export default function ChatClient() {
   useEffect(() => {
     async function loadUsage() {
       try {
-        const res = await fetch("/api/user-chat-usage");
+        const res = await fetch("/api/v1/user-chat-usage");
         const data = await res.json();
         setUsage(data.count ?? 0);
       } catch {

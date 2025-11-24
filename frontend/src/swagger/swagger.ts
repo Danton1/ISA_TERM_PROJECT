@@ -6,7 +6,7 @@ export const swaggerSpec = swaggerJsdoc({
         openapi: "3.0.0",
         info: {
             title: "My API",
-            version: "1.0.0",
+            version: "v1",
             description: "API documentation for Account, Admin, Auth, Chat, and Usage endpoints."
         },
         components: {
@@ -26,5 +26,5 @@ export const swaggerSpec = swaggerJsdoc({
     },
 
     // IMPORTANT: this path must match your real project structure
-    apis: ["./src/app/api/**/*.ts"]
+    apis: ["./src/app/api/v1/**/*.ts"]
 });

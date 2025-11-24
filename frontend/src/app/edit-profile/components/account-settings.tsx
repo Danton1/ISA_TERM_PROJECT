@@ -16,7 +16,7 @@ export function AccountSettings() {
   // Fetch current user
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await fetch("/api/account/get-user")
+      const res = await fetch("/api/v1/account/get-user")
       const data = await res.json()
       setName(data.name)
     }
@@ -25,7 +25,7 @@ export function AccountSettings() {
 
   const handleNameSubmit = async () => {
     try {
-      const res = await fetch("/api/account/change-name", {
+      const res = await fetch("/api/v1/account/change-name", {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name })
@@ -40,7 +40,7 @@ export function AccountSettings() {
 
   const handlePasswordSubmit = async () => {
     try {
-      const res = await fetch("/api/account/change-password", {
+      const res = await fetch("/api/v1/account/change-password", {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ password })
