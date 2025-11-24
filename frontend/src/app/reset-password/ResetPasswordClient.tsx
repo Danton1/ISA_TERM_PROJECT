@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -16,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 import { resetPassword } from "@/lib/auth-client";
+import { MESSAGES } from "@/constants/lang/messages";
 
 type Props = { token: string };
 
@@ -32,15 +34,15 @@ export default function ResetPasswordClient({ token }: Props) {
     setError("");
 
     if (!token) {
-      setError("Invalid or missing reset token");
+      setError(MESSAGES.auth.missingResetToken);
       return;
     }
     if (password !== confirmPassword) {
-      setError("Passwords do not match");
+      setError(MESSAGES.auth.passwordsDontMatch);
       return;
     }
     if (password.length < 8) {
-      setError("Password must be at least 8 characters");
+      setError(MESSAGES.auth.passwordTooShort);
       return;
     }
 
@@ -52,7 +54,11 @@ export default function ResetPasswordClient({ token }: Props) {
       });
 
       if (result.error) {
-        setError(result.error.message || "Failed to reset password");
+        const raw = (result.error.message || "").toLowerCase();
+        const msg = raw
+          ? MESSAGES.resetPassword.failed
+          : MESSAGES.resetPassword.genericError;
+        setError(msg);
       } else {
         setSuccess(true);
         setTimeout(() => {
@@ -60,8 +66,8 @@ export default function ResetPasswordClient({ token }: Props) {
         }, 2000);
       }
     } catch (err) {
-      console.error("Reset password error:", err);
-      setError("An error occurred. Please try again.");
+      console.error(MESSAGES.resetPassword.resetError, err);
+      setError(MESSAGES.resetPassword.genericError);
     } finally {
       setLoading(false);
     }
@@ -69,8 +75,15 @@ export default function ResetPasswordClient({ token }: Props) {
 
   if (!token && !error) {
     return (
-      <div className="flex min-h-screen items-center justify-center">
-        <p>Loading...</p>
+      <div className="min-h-dvh flex items-center justify-center p-6">
+        <div className="flex items-center gap-3">
+          <div
+            className="h-6 w-6 rounded-full border-4 border-gray-200 border-t-slate-700 animate-spin"
+            role="status"
+            aria-label="loading"
+          />
+          <span className="text-xl text-slate-800">{MESSAGES.general.loading}</span>
+        </div>
       </div>
     );
   }
@@ -83,6 +96,11 @@ export default function ResetPasswordClient({ token }: Props) {
           <CardDescription>Enter your new password</CardDescription>
         </CardHeader>
         <CardContent>
+          {success ? (
+            <div className="text-center text-green-600">
+              {MESSAGES.resetPassword.success}
+            </div>
+          ) : null}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="password">New Password</Label>
@@ -117,7 +135,7 @@ export default function ResetPasswordClient({ token }: Props) {
             )}
 
             <Button type="submit" className="w-full" disabled={loading || !token}>
-              {loading ? "Resetting..." : "Reset Password"}
+              {loading ? MESSAGES.resetPassword.resetting : MESSAGES.resetPassword.resetPassword}
             </Button>
 
             <Button asChild variant="outline" className="w-full bg-transparent">

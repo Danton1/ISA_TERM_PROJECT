@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { MESSAGES } from "@/constants/lang/messages";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -18,7 +19,13 @@ export default function LoginPage() {
     e.preventDefault();
     setError(null);
     const { data, error } = await signIn.email({ email, password });
-    if (error) return setError(error.message ?? "Unable to sign in. Please try again.");
+    if (error) {
+      if (error.message === MESSAGES.auth.invalidCredentials) {
+        setError(MESSAGES.auth.invalidCredentials);
+      } else {
+        setError(MESSAGES.auth.signInFailed);
+      }
+    };
     router.push("/dashboard");
   };
 
@@ -39,7 +46,11 @@ export default function LoginPage() {
               <Label htmlFor="password">Password</Label>
               <Input id="password" type="password" value={password} onChange={e=>setPassword(e.target.value)} required />
             </div>
-            {error && <p className="text-sm text-red-600">{error}</p>}
+            {error &&  
+              <p className="text-red-500 text-center">
+                {error === MESSAGES.auth.invalidCredentials ? MESSAGES.auth.invalidCredentials : error}
+              </p>
+            }
             <Button type="submit" className="w-full">Sign in</Button>
           </form>
           <div className="mt-4 text-sm flex justify-between">

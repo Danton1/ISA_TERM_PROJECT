@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Loader2, Send } from "lucide-react";
+import { MESSAGES } from "@/constants/lang/messages";
 
 type Msg = {
   id: string;
@@ -21,8 +22,7 @@ export default function ChatClient() {
     {
       id: crypto.randomUUID(),
       role: "assistant",
-      content:
-        "Hi! I’m your education advisor. Ask me anything! e.g. “What degree do I need to become a data scientist?”",
+      content: MESSAGES.chat.intro,
     },
   ]);
   const [input, setInput] = useState("");
@@ -51,20 +51,19 @@ export default function ChatClient() {
         body: JSON.stringify({ prompt }),
       });
       const data = await r.json();
-      if (!r.ok) throw new Error(data?.error || "Request failed");
+      if (!r.ok) throw new Error(data?.error || MESSAGES.chat.requestFailed);
 
       const botMsg: Msg = {
         id: crypto.randomUUID(),
         role: "assistant",
-        content: String(data?.response ?? "").trim() || "(no response)",
+        content: String(data?.response ?? "").trim() || MESSAGES.chat.noResponse,
       };
       setMessages((m) => [...m, botMsg]);
     } catch (e: any) {
       const errMsg: Msg = {
         id: crypto.randomUUID(),
         role: "assistant",
-        content:
-          "Sorry! Something went wrong talking to the advisor. Please try again.",
+        content: MESSAGES.chat.requestFailedMsg,
       };
       setMessages((m) => [...m, errMsg]);
     } finally {
@@ -114,13 +113,13 @@ export default function ChatClient() {
                   usage > 20 ? "text-red-600" : "text-gray-600"
                 }`}
               >
-                Total API Usage: {usage}
+                {MESSAGES.chat.usagePrefix} {usage}
               </p>
             )}
 
             {usage !== null && usage > 20 && (
               <p className="mt-1 text-sm text-red-500 font-bold">
-                ⚠️ You have exceeded the free 20-message limit.
+                {MESSAGES.chat.limitExceeded}
               </p>
             )}
           </div>
@@ -154,7 +153,7 @@ export default function ChatClient() {
             {/* Composer */}
             <div className="rounded-md border p-2 bg-card">
               <Textarea
-                placeholder="Ask about programs, degrees, admissions, or career paths…"
+                placeholder={MESSAGES.chat.placeholder}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={onKeyDown}
@@ -188,9 +187,9 @@ export default function ChatClient() {
             {/* Quick suggestions */}
             <div className="flex flex-wrap gap-2">
               {[
-                "What degree do I need to become a data scientist?",
-                "Which courses help me transition into ML engineering?",
-                "What’s the difference between a BSc and a BASc?",
+                MESSAGES.chat.suggestion1,
+                MESSAGES.chat.suggestion2,
+                MESSAGES.chat.suggestion3,
               ].map((q) => (
                 <Button
                   key={q}
