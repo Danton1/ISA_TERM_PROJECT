@@ -52,7 +52,7 @@ export const MESSAGES = {
 
   dashboard: {
     totalApiRequests: "Total API Requests:",
-  }
+  },
 
   admin: {
     accessDenied: "❌ Access Denied — Admin Only",
