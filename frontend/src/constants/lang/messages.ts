@@ -50,6 +50,10 @@ export const MESSAGES = {
     placeholder: "Ask about programs, degrees, admissions, or career paths…",
   },
 
+  dashboard: {
+    totalApiRequests: "Total API Requests:",
+  }
+
   admin: {
     accessDenied: "❌ Access Denied — Admin Only",
     checkingPermissions: "Checking permissions…",
