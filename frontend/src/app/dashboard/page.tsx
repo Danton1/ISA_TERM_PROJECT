@@ -16,12 +16,13 @@ export default function DashboardPage() {
   const router = useRouter();
   const { data: session, isPending } = useSession();
   const [isAdmin, setIsAdmin] = useState(false);
+  const [usage, setUsage] = useState(null);
 
   useEffect(() => {
     if (!isPending && !session) router.replace("/login");
   }, [isPending, session, router]);
 
-    useEffect(() => {
+  useEffect(() => {
     async function checkRole() {
       try {
         const res = await fetch("/api/admin/me");
@@ -41,6 +42,19 @@ export default function DashboardPage() {
     checkRole();
   }, []);
 
+  useEffect(() => {
+    async function loadUsage() {
+      try {
+        const res = await fetch("/api/total-usage");
+        const data = await res.json();
+        setUsage(data.total_usage);
+      } catch {
+        setUsage(null);
+      }
+    }
+
+    if (session?.user) loadUsage();
+  }, [session]);
 
   if (isPending) {
     return (
@@ -63,7 +77,13 @@ export default function DashboardPage() {
       <Card className="w-full max-w-sm">
         <CardHeader>
           <CardTitle>Dashboard</CardTitle>
-          <CardDescription>Signed in as {session.user.email}</CardDescription>
+          <CardDescription>
+            Signed in as {session.user.email}
+            <br />
+            <span className="text-sm text-slate-500">
+              Total API Requests: {usage ?? "–"}
+            </span>
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex flex-col gap-4">
@@ -75,18 +95,16 @@ export default function DashboardPage() {
             >
               Education Advisor
             </Button>
-            {
-              isAdmin ? (
-                <Button
-                  className="bg-green-700 text-white hover:bg-green-600 hover:cursor-pointer"
-                  onClick={() => {
-                    router.push("/admin");
-                  }}
-                >
-                  Admin Panel
-                </Button>
-              ) : null
-            }
+            {isAdmin ? (
+              <Button
+                className="bg-green-700 text-white hover:bg-green-600 hover:cursor-pointer"
+                onClick={() => {
+                  router.push("/admin");
+                }}
+              >
+                Admin Panel
+              </Button>
+            ) : null}
             <Button
               className="bg-red-700 text-white hover:bg-red-600 hover:cursor-pointer"
               onClick={async () => {
