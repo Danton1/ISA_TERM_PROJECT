@@ -3,8 +3,10 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { MESSAGES } from "@/constants/lang/messages";
+import { useSession } from "@/lib/auth-client";
 
 export default function AdminPage() {
+  const { data: session } = useSession();
   const [stats, setStats] = useState<any[]>([]);
   const [users, setUsers] = useState<any[]>([]);
   const [loadingStats, setLoadingStats] = useState(true);
@@ -179,18 +181,23 @@ export default function AdminPage() {
                 <td className="border px-4 py-2">{u.email}</td>
                 <td className="border px-4 py-2">{u.role}</td>
                 <td className="border px-4 py-2 flex gap-2">
-                  <button
-                    className="px-3 py-1 bg-yellow-500 text-white rounded"
-                    onClick={() => handlePromote(u.id)}
-                  >
-                    Promote
-                  </button>
-                  <button
-                    className="px-3 py-1 bg-red-600 text-white rounded"
-                    onClick={() => handleDelete(u.id)}
-                  >
-                    Delete
-                  </button>
+                  {session?.user?.id !== u.id && (
+                    <>
+                      <button
+                        className="px-3 py-1 bg-yellow-500 text-white rounded"
+                        onClick={() => handlePromote(u.id)}
+                      >
+                        Promote
+                      </button>
+
+                      <button
+                        className="px-3 py-1 bg-red-600 text-white rounded"
+                        onClick={() => handleDelete(u.id)}
+                      >
+                        Delete
+                      </button>
+                    </>
+                  )}
                 </td>
               </tr>
             ))}
