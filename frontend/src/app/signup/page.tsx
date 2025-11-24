@@ -32,6 +32,7 @@ export default function SignupPage() {
       } else {
         return setError(error.message ?? MESSAGES.auth.signUpFailed);
       }
+      return;
     }
     router.push("/dashboard");
   };
