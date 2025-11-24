@@ -1,3 +1,4 @@
+// ChatGPT and Copoilot assisted with the proofreading and optimization of this code.
 import ResetPasswordClient from "./ResetPasswordClient";
 
 export const dynamic = "force-dynamic";

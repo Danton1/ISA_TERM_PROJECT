@@ -1,3 +1,4 @@
+// ChatGPT and Copoilot assisted with the proofreading and optimization of this code.
 "use client";
 
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -13,7 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { forgetPassword } from "@/lib/auth-client";
 import Link from "next/link";
-import { MESSAGES } from "@/constants/lang/messages"; 
+import { MESSAGES } from "@/constants/lang/messages";
 import { useState } from "react";
 
 export default function ForgotPasswordPage() {
@@ -36,8 +37,8 @@ export default function ForgotPasswordPage() {
 
       if (result.error) {
         const raw = (result.error.message || "").toLowerCase();
-        const msg = raw 
-          ? MESSAGES.forgotPassword.sendFailed 
+        const msg = raw
+          ? MESSAGES.forgotPassword.sendFailed
           : MESSAGES.forgotPassword.genericError;
         setError(msg);
       } else {

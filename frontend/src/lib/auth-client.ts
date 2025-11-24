@@ -1,3 +1,4 @@
+// ChatGPT and Copoilot assisted with the proofreading and optimization of this code.
 import { createAuthClient } from "better-auth/react";
 
 // If NEXT_PUBLIC_APP_URL is not set, default to localhost for dev

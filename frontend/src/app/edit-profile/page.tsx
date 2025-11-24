@@ -1,3 +1,4 @@
+// ChatGPT and Copoilot assisted with the proofreading and optimization of this code.
 import { ProfileHeader } from "./components/profile-header"
 import { AccountSettings } from "./components/account-settings"
 

@@ -1,3 +1,4 @@
+// ChatGPT and Copoilot assisted with the proofreading and optimization of this code.
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 

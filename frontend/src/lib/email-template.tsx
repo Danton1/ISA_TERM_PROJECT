@@ -1,5 +1,6 @@
+// ChatGPT and Copoilot assisted with the proofreading and optimization of this code.
 export function getResetPasswordEmailHtml(email: string, resetUrl: string): string {
-    return `
+  return `
   <!DOCTYPE html>
   <html>
   <head>
@@ -22,5 +23,4 @@ export function getResetPasswordEmailHtml(email: string, resetUrl: string): stri
     </table>
   </body>
   </html>`;
-  }
-  
+}

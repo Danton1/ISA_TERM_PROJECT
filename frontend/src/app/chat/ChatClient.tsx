@@ -1,3 +1,4 @@
+// ChatGPT and Copoilot assisted with the proofreading and optimization of this code.
 "use client";
 
 import { useEffect, useRef, useState } from "react";
@@ -109,9 +110,8 @@ export default function ChatClient() {
 
             {usage !== null && (
               <p
-                className={`mt-1 text-sm font-semibold ${
-                  usage > 20 ? "text-red-600" : "text-gray-600"
-                }`}
+                className={`mt-1 text-sm font-semibold ${usage > 20 ? "text-red-600" : "text-gray-600"
+                  }`}
               >
                 {MESSAGES.chat.usagePrefix} {usage}
               </p>
@@ -220,9 +220,8 @@ function MessageBubble({
   const isUser = role === "user";
   return (
     <div
-      className={`flex items-start gap-3 ${
-        isUser ? "justify-end" : "justify-start"
-      }`}
+      className={`flex items-start gap-3 ${isUser ? "justify-end" : "justify-start"
+        }`}
     >
       {!isUser && (
         <Avatar className="h-8 w-8">
@@ -230,9 +229,8 @@ function MessageBubble({
         </Avatar>
       )}
       <div
-        className={`max-w-[80%] rounded-2xl px-4 py-2 text-sm leading-relaxed shadow-sm ${
-          isUser ? "bg-primary text-primary-foreground" : "bg-muted"
-        }`}
+        className={`max-w-[80%] rounded-2xl px-4 py-2 text-sm leading-relaxed shadow-sm ${isUser ? "bg-primary text-primary-foreground" : "bg-muted"
+          }`}
       >
         {content}
       </div>
