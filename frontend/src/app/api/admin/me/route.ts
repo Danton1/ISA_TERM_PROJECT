@@ -15,9 +15,10 @@
  *               properties:
  *                 user:
  *                   oneOf:
- *                     - type: object
- *                     - type: 'null'
+ *                    - type: object
+ *                    - nullable: true
  */
+
 
 import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
