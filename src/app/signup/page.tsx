@@ -1,25 +1,46 @@
+// ChatGPT and Copoilot assisted with the proofreading and optimization of this code.
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { signUp } from "@/lib/auth-client";
+import { signUp, useSession } from "@/lib/auth-client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { MESSAGES } from "@/constants/lang/messages";
 
 export default function SignupPage() {
   const router = useRouter();
+  const { data: session } = useSession();
   const [name, setName] = useState("");
-  const [email, setEmail] = useState(""); 
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (session?.user) {
+      router.replace("/dashboard");
+    }
+  }, [session, router]);
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-    const { data, error } = await signUp.email({ name, email, password });
-    if (error) return setError(error.message ?? "Unable to sign up. Please try again.");
+    if (password.length < 8) {
+      setError(MESSAGES.auth.passwordTooShort);
+      return;
+    }
+  const { error } = await signUp.email({ name, email, password });
+    if (error) {
+      const raw = (error.message || "").toLowerCase();
+      if (raw.includes("already") && raw.includes("email")) {
+        setError(MESSAGES.auth.emailInUse);
+      } else {
+        return setError(error.message ?? MESSAGES.auth.signUpFailed);
+      }
+      return;
+    }
     router.push("/dashboard");
   };
 
@@ -34,15 +55,15 @@ export default function SignupPage() {
           <form onSubmit={onSubmit} className="space-y-4">
             <div>
               <Label htmlFor="name">Name</Label>
-              <Input id="name" value={name} onChange={e=>setName(e.target.value)} required />
+              <Input id="name" value={name} onChange={e => setName(e.target.value)} required />
             </div>
             <div>
               <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" value={email} onChange={e=>setEmail(e.target.value)} required />
+              <Input id="email" type="email" value={email} onChange={e => setEmail(e.target.value)} required />
             </div>
             <div>
               <Label htmlFor="password">Password</Label>
-              <Input id="password" type="password" value={password} onChange={e=>setPassword(e.target.value)} required />
+              <Input id="password" type="password" value={password} onChange={e => setPassword(e.target.value)} required />
             </div>
             {error && <p className="text-sm text-red-600">{error}</p>}
             <Button type="submit" className="w-full">Sign up</Button>

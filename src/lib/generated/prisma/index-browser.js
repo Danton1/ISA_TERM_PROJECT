@@ -126,6 +126,8 @@ exports.Prisma.UserScalarFieldEnum = {
   email: 'email',
   emailVerified: 'emailVerified',
   image: 'image',
+  role: 'role',
+  totalApiRequests: 'totalApiRequests',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -166,6 +168,25 @@ exports.Prisma.VerificationScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.EndpointStatScalarFieldEnum = {
+  id: 'id',
+  method: 'method',
+  endpoint: 'endpoint',
+  count: 'count',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.UserApiUsageScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  method: 'method',
+  endpoint: 'endpoint',
+  count: 'count',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -186,7 +207,9 @@ exports.Prisma.ModelName = {
   User: 'User',
   Session: 'Session',
   Account: 'Account',
-  Verification: 'Verification'
+  Verification: 'Verification',
+  EndpointStat: 'EndpointStat',
+  UserApiUsage: 'UserApiUsage'
 };
 
 /**

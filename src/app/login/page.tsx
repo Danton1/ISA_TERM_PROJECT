@@ -1,24 +1,42 @@
+// ChatGPT and Copoilot assisted with the proofreading and optimization of this code.
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { signIn } from "@/lib/auth-client";
+import { signIn, useSession } from "@/lib/auth-client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { MESSAGES } from "@/constants/lang/messages";
 
 export default function LoginPage() {
   const router = useRouter();
-  const [email, setEmail] = useState(""); 
+  const { data: session } = useSession();
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (session?.user) {
+      // If already signed in, send to dashboard
+      router.replace("/dashboard");
+    }
+  }, [session, router]);
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-    const { data, error } = await signIn.email({ email, password });
-    if (error) return setError(error.message ?? "Unable to sign in. Please try again.");
+  const { error } = await signIn.email({ email, password });
+    if (error) {
+      if (error.message === MESSAGES.auth.invalidCredentials) {
+        setError(MESSAGES.auth.invalidCredentials);
+      } else {
+        setError(MESSAGES.auth.signInFailed);
+      }
+      return;
+    }
+    // sign in successful
     router.push("/dashboard");
   };
 
@@ -33,13 +51,17 @@ export default function LoginPage() {
           <form onSubmit={onSubmit} className="space-y-4">
             <div>
               <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" value={email} onChange={e=>setEmail(e.target.value)} required />
+              <Input id="email" type="email" value={email} onChange={e => setEmail(e.target.value)} required />
             </div>
             <div>
               <Label htmlFor="password">Password</Label>
-              <Input id="password" type="password" value={password} onChange={e=>setPassword(e.target.value)} required />
+              <Input id="password" type="password" value={password} onChange={e => setPassword(e.target.value)} required />
             </div>
-            {error && <p className="text-sm text-red-600">{error}</p>}
+            {error &&
+              <p className="text-red-500 text-center">
+                {error === MESSAGES.auth.invalidCredentials ? MESSAGES.auth.invalidCredentials : error}
+              </p>
+            }
             <Button type="submit" className="w-full">Sign in</Button>
           </form>
           <div className="mt-4 text-sm flex justify-between">

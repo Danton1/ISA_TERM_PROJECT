@@ -33,6 +33,16 @@ export type Account = $Result.DefaultSelection<Prisma.$AccountPayload>
  * 
  */
 export type Verification = $Result.DefaultSelection<Prisma.$VerificationPayload>
+/**
+ * Model EndpointStat
+ * 
+ */
+export type EndpointStat = $Result.DefaultSelection<Prisma.$EndpointStatPayload>
+/**
+ * Model UserApiUsage
+ * 
+ */
+export type UserApiUsage = $Result.DefaultSelection<Prisma.$UserApiUsagePayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -191,6 +201,26 @@ export class PrismaClient<
     * ```
     */
   get verification(): Prisma.VerificationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.endpointStat`: Exposes CRUD operations for the **EndpointStat** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more EndpointStats
+    * const endpointStats = await prisma.endpointStat.findMany()
+    * ```
+    */
+  get endpointStat(): Prisma.EndpointStatDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.userApiUsage`: Exposes CRUD operations for the **UserApiUsage** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more UserApiUsages
+    * const userApiUsages = await prisma.userApiUsage.findMany()
+    * ```
+    */
+  get userApiUsage(): Prisma.UserApiUsageDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -635,7 +665,9 @@ export namespace Prisma {
     User: 'User',
     Session: 'Session',
     Account: 'Account',
-    Verification: 'Verification'
+    Verification: 'Verification',
+    EndpointStat: 'EndpointStat',
+    UserApiUsage: 'UserApiUsage'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -654,7 +686,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "session" | "account" | "verification"
+      modelProps: "user" | "session" | "account" | "verification" | "endpointStat" | "userApiUsage"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -954,6 +986,154 @@ export namespace Prisma {
           }
         }
       }
+      EndpointStat: {
+        payload: Prisma.$EndpointStatPayload<ExtArgs>
+        fields: Prisma.EndpointStatFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.EndpointStatFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EndpointStatPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.EndpointStatFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EndpointStatPayload>
+          }
+          findFirst: {
+            args: Prisma.EndpointStatFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EndpointStatPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.EndpointStatFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EndpointStatPayload>
+          }
+          findMany: {
+            args: Prisma.EndpointStatFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EndpointStatPayload>[]
+          }
+          create: {
+            args: Prisma.EndpointStatCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EndpointStatPayload>
+          }
+          createMany: {
+            args: Prisma.EndpointStatCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.EndpointStatCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EndpointStatPayload>[]
+          }
+          delete: {
+            args: Prisma.EndpointStatDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EndpointStatPayload>
+          }
+          update: {
+            args: Prisma.EndpointStatUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EndpointStatPayload>
+          }
+          deleteMany: {
+            args: Prisma.EndpointStatDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.EndpointStatUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.EndpointStatUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EndpointStatPayload>[]
+          }
+          upsert: {
+            args: Prisma.EndpointStatUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EndpointStatPayload>
+          }
+          aggregate: {
+            args: Prisma.EndpointStatAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateEndpointStat>
+          }
+          groupBy: {
+            args: Prisma.EndpointStatGroupByArgs<ExtArgs>
+            result: $Utils.Optional<EndpointStatGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.EndpointStatCountArgs<ExtArgs>
+            result: $Utils.Optional<EndpointStatCountAggregateOutputType> | number
+          }
+        }
+      }
+      UserApiUsage: {
+        payload: Prisma.$UserApiUsagePayload<ExtArgs>
+        fields: Prisma.UserApiUsageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UserApiUsageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserApiUsagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UserApiUsageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserApiUsagePayload>
+          }
+          findFirst: {
+            args: Prisma.UserApiUsageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserApiUsagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UserApiUsageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserApiUsagePayload>
+          }
+          findMany: {
+            args: Prisma.UserApiUsageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserApiUsagePayload>[]
+          }
+          create: {
+            args: Prisma.UserApiUsageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserApiUsagePayload>
+          }
+          createMany: {
+            args: Prisma.UserApiUsageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.UserApiUsageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserApiUsagePayload>[]
+          }
+          delete: {
+            args: Prisma.UserApiUsageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserApiUsagePayload>
+          }
+          update: {
+            args: Prisma.UserApiUsageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserApiUsagePayload>
+          }
+          deleteMany: {
+            args: Prisma.UserApiUsageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UserApiUsageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.UserApiUsageUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserApiUsagePayload>[]
+          }
+          upsert: {
+            args: Prisma.UserApiUsageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserApiUsagePayload>
+          }
+          aggregate: {
+            args: Prisma.UserApiUsageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUserApiUsage>
+          }
+          groupBy: {
+            args: Prisma.UserApiUsageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UserApiUsageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UserApiUsageCountArgs<ExtArgs>
+            result: $Utils.Optional<UserApiUsageCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1054,6 +1234,8 @@ export namespace Prisma {
     session?: SessionOmit
     account?: AccountOmit
     verification?: VerificationOmit
+    endpointStat?: EndpointStatOmit
+    userApiUsage?: UserApiUsageOmit
   }
 
   /* Types for Logging */
@@ -1136,11 +1318,13 @@ export namespace Prisma {
   export type UserCountOutputType = {
     sessions: number
     accounts: number
+    apiUsage: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     sessions?: boolean | UserCountOutputTypeCountSessionsArgs
     accounts?: boolean | UserCountOutputTypeCountAccountsArgs
+    apiUsage?: boolean | UserCountOutputTypeCountApiUsageArgs
   }
 
   // Custom InputTypes
@@ -1168,6 +1352,13 @@ export namespace Prisma {
     where?: AccountWhereInput
   }
 
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountApiUsageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserApiUsageWhereInput
+  }
+
 
   /**
    * Models
@@ -1179,8 +1370,18 @@ export namespace Prisma {
 
   export type AggregateUser = {
     _count: UserCountAggregateOutputType | null
+    _avg: UserAvgAggregateOutputType | null
+    _sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
+  }
+
+  export type UserAvgAggregateOutputType = {
+    totalApiRequests: number | null
+  }
+
+  export type UserSumAggregateOutputType = {
+    totalApiRequests: number | null
   }
 
   export type UserMinAggregateOutputType = {
@@ -1189,6 +1390,8 @@ export namespace Prisma {
     email: string | null
     emailVerified: boolean | null
     image: string | null
+    role: string | null
+    totalApiRequests: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1199,6 +1402,8 @@ export namespace Prisma {
     email: string | null
     emailVerified: boolean | null
     image: string | null
+    role: string | null
+    totalApiRequests: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1209,11 +1414,21 @@ export namespace Prisma {
     email: number
     emailVerified: number
     image: number
+    role: number
+    totalApiRequests: number
     createdAt: number
     updatedAt: number
     _all: number
   }
 
+
+  export type UserAvgAggregateInputType = {
+    totalApiRequests?: true
+  }
+
+  export type UserSumAggregateInputType = {
+    totalApiRequests?: true
+  }
 
   export type UserMinAggregateInputType = {
     id?: true
@@ -1221,6 +1436,8 @@ export namespace Prisma {
     email?: true
     emailVerified?: true
     image?: true
+    role?: true
+    totalApiRequests?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -1231,6 +1448,8 @@ export namespace Prisma {
     email?: true
     emailVerified?: true
     image?: true
+    role?: true
+    totalApiRequests?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -1241,6 +1460,8 @@ export namespace Prisma {
     email?: true
     emailVerified?: true
     image?: true
+    role?: true
+    totalApiRequests?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -1284,6 +1505,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: UserAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: UserSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: UserMinAggregateInputType
@@ -1314,6 +1547,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: UserCountAggregateInputType | true
+    _avg?: UserAvgAggregateInputType
+    _sum?: UserSumAggregateInputType
     _min?: UserMinAggregateInputType
     _max?: UserMaxAggregateInputType
   }
@@ -1324,9 +1559,13 @@ export namespace Prisma {
     email: string
     emailVerified: boolean
     image: string | null
+    role: string
+    totalApiRequests: number
     createdAt: Date
     updatedAt: Date
     _count: UserCountAggregateOutputType | null
+    _avg: UserAvgAggregateOutputType | null
+    _sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
   }
@@ -1351,10 +1590,13 @@ export namespace Prisma {
     email?: boolean
     emailVerified?: boolean
     image?: boolean
+    role?: boolean
+    totalApiRequests?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     sessions?: boolean | User$sessionsArgs<ExtArgs>
     accounts?: boolean | User$accountsArgs<ExtArgs>
+    apiUsage?: boolean | User$apiUsageArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1364,6 +1606,8 @@ export namespace Prisma {
     email?: boolean
     emailVerified?: boolean
     image?: boolean
+    role?: boolean
+    totalApiRequests?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -1374,6 +1618,8 @@ export namespace Prisma {
     email?: boolean
     emailVerified?: boolean
     image?: boolean
+    role?: boolean
+    totalApiRequests?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -1384,14 +1630,17 @@ export namespace Prisma {
     email?: boolean
     emailVerified?: boolean
     image?: boolean
+    role?: boolean
+    totalApiRequests?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "image" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "image" | "role" | "totalApiRequests" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     sessions?: boolean | User$sessionsArgs<ExtArgs>
     accounts?: boolean | User$accountsArgs<ExtArgs>
+    apiUsage?: boolean | User$apiUsageArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1402,6 +1651,7 @@ export namespace Prisma {
     objects: {
       sessions: Prisma.$SessionPayload<ExtArgs>[]
       accounts: Prisma.$AccountPayload<ExtArgs>[]
+      apiUsage: Prisma.$UserApiUsagePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -1409,6 +1659,8 @@ export namespace Prisma {
       email: string
       emailVerified: boolean
       image: string | null
+      role: string
+      totalApiRequests: number
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["user"]>
@@ -1807,6 +2059,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     sessions<T extends User$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     accounts<T extends User$accountsArgs<ExtArgs> = {}>(args?: Subset<T, User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    apiUsage<T extends User$apiUsageArgs<ExtArgs> = {}>(args?: Subset<T, User$apiUsageArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserApiUsagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1841,6 +2094,8 @@ export namespace Prisma {
     readonly email: FieldRef<"User", 'String'>
     readonly emailVerified: FieldRef<"User", 'Boolean'>
     readonly image: FieldRef<"User", 'String'>
+    readonly role: FieldRef<"User", 'String'>
+    readonly totalApiRequests: FieldRef<"User", 'Int'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
   }
@@ -2276,6 +2531,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: AccountScalarFieldEnum | AccountScalarFieldEnum[]
+  }
+
+  /**
+   * User.apiUsage
+   */
+  export type User$apiUsageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserApiUsage
+     */
+    select?: UserApiUsageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserApiUsage
+     */
+    omit?: UserApiUsageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserApiUsageInclude<ExtArgs> | null
+    where?: UserApiUsageWhereInput
+    orderBy?: UserApiUsageOrderByWithRelationInput | UserApiUsageOrderByWithRelationInput[]
+    cursor?: UserApiUsageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserApiUsageScalarFieldEnum | UserApiUsageScalarFieldEnum[]
   }
 
   /**
@@ -5565,6 +5844,2174 @@ export namespace Prisma {
 
 
   /**
+   * Model EndpointStat
+   */
+
+  export type AggregateEndpointStat = {
+    _count: EndpointStatCountAggregateOutputType | null
+    _avg: EndpointStatAvgAggregateOutputType | null
+    _sum: EndpointStatSumAggregateOutputType | null
+    _min: EndpointStatMinAggregateOutputType | null
+    _max: EndpointStatMaxAggregateOutputType | null
+  }
+
+  export type EndpointStatAvgAggregateOutputType = {
+    id: number | null
+    count: number | null
+  }
+
+  export type EndpointStatSumAggregateOutputType = {
+    id: number | null
+    count: number | null
+  }
+
+  export type EndpointStatMinAggregateOutputType = {
+    id: number | null
+    method: string | null
+    endpoint: string | null
+    count: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type EndpointStatMaxAggregateOutputType = {
+    id: number | null
+    method: string | null
+    endpoint: string | null
+    count: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type EndpointStatCountAggregateOutputType = {
+    id: number
+    method: number
+    endpoint: number
+    count: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type EndpointStatAvgAggregateInputType = {
+    id?: true
+    count?: true
+  }
+
+  export type EndpointStatSumAggregateInputType = {
+    id?: true
+    count?: true
+  }
+
+  export type EndpointStatMinAggregateInputType = {
+    id?: true
+    method?: true
+    endpoint?: true
+    count?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type EndpointStatMaxAggregateInputType = {
+    id?: true
+    method?: true
+    endpoint?: true
+    count?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type EndpointStatCountAggregateInputType = {
+    id?: true
+    method?: true
+    endpoint?: true
+    count?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type EndpointStatAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which EndpointStat to aggregate.
+     */
+    where?: EndpointStatWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EndpointStats to fetch.
+     */
+    orderBy?: EndpointStatOrderByWithRelationInput | EndpointStatOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: EndpointStatWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EndpointStats from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EndpointStats.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned EndpointStats
+    **/
+    _count?: true | EndpointStatCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: EndpointStatAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: EndpointStatSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: EndpointStatMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: EndpointStatMaxAggregateInputType
+  }
+
+  export type GetEndpointStatAggregateType<T extends EndpointStatAggregateArgs> = {
+        [P in keyof T & keyof AggregateEndpointStat]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEndpointStat[P]>
+      : GetScalarType<T[P], AggregateEndpointStat[P]>
+  }
+
+
+
+
+  export type EndpointStatGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EndpointStatWhereInput
+    orderBy?: EndpointStatOrderByWithAggregationInput | EndpointStatOrderByWithAggregationInput[]
+    by: EndpointStatScalarFieldEnum[] | EndpointStatScalarFieldEnum
+    having?: EndpointStatScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: EndpointStatCountAggregateInputType | true
+    _avg?: EndpointStatAvgAggregateInputType
+    _sum?: EndpointStatSumAggregateInputType
+    _min?: EndpointStatMinAggregateInputType
+    _max?: EndpointStatMaxAggregateInputType
+  }
+
+  export type EndpointStatGroupByOutputType = {
+    id: number
+    method: string
+    endpoint: string
+    count: number
+    createdAt: Date
+    updatedAt: Date
+    _count: EndpointStatCountAggregateOutputType | null
+    _avg: EndpointStatAvgAggregateOutputType | null
+    _sum: EndpointStatSumAggregateOutputType | null
+    _min: EndpointStatMinAggregateOutputType | null
+    _max: EndpointStatMaxAggregateOutputType | null
+  }
+
+  type GetEndpointStatGroupByPayload<T extends EndpointStatGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<EndpointStatGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof EndpointStatGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], EndpointStatGroupByOutputType[P]>
+            : GetScalarType<T[P], EndpointStatGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type EndpointStatSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    method?: boolean
+    endpoint?: boolean
+    count?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["endpointStat"]>
+
+  export type EndpointStatSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    method?: boolean
+    endpoint?: boolean
+    count?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["endpointStat"]>
+
+  export type EndpointStatSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    method?: boolean
+    endpoint?: boolean
+    count?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["endpointStat"]>
+
+  export type EndpointStatSelectScalar = {
+    id?: boolean
+    method?: boolean
+    endpoint?: boolean
+    count?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type EndpointStatOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "method" | "endpoint" | "count" | "createdAt" | "updatedAt", ExtArgs["result"]["endpointStat"]>
+
+  export type $EndpointStatPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "EndpointStat"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      method: string
+      endpoint: string
+      count: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["endpointStat"]>
+    composites: {}
+  }
+
+  type EndpointStatGetPayload<S extends boolean | null | undefined | EndpointStatDefaultArgs> = $Result.GetResult<Prisma.$EndpointStatPayload, S>
+
+  type EndpointStatCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<EndpointStatFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: EndpointStatCountAggregateInputType | true
+    }
+
+  export interface EndpointStatDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['EndpointStat'], meta: { name: 'EndpointStat' } }
+    /**
+     * Find zero or one EndpointStat that matches the filter.
+     * @param {EndpointStatFindUniqueArgs} args - Arguments to find a EndpointStat
+     * @example
+     * // Get one EndpointStat
+     * const endpointStat = await prisma.endpointStat.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends EndpointStatFindUniqueArgs>(args: SelectSubset<T, EndpointStatFindUniqueArgs<ExtArgs>>): Prisma__EndpointStatClient<$Result.GetResult<Prisma.$EndpointStatPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one EndpointStat that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {EndpointStatFindUniqueOrThrowArgs} args - Arguments to find a EndpointStat
+     * @example
+     * // Get one EndpointStat
+     * const endpointStat = await prisma.endpointStat.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends EndpointStatFindUniqueOrThrowArgs>(args: SelectSubset<T, EndpointStatFindUniqueOrThrowArgs<ExtArgs>>): Prisma__EndpointStatClient<$Result.GetResult<Prisma.$EndpointStatPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first EndpointStat that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EndpointStatFindFirstArgs} args - Arguments to find a EndpointStat
+     * @example
+     * // Get one EndpointStat
+     * const endpointStat = await prisma.endpointStat.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends EndpointStatFindFirstArgs>(args?: SelectSubset<T, EndpointStatFindFirstArgs<ExtArgs>>): Prisma__EndpointStatClient<$Result.GetResult<Prisma.$EndpointStatPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first EndpointStat that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EndpointStatFindFirstOrThrowArgs} args - Arguments to find a EndpointStat
+     * @example
+     * // Get one EndpointStat
+     * const endpointStat = await prisma.endpointStat.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends EndpointStatFindFirstOrThrowArgs>(args?: SelectSubset<T, EndpointStatFindFirstOrThrowArgs<ExtArgs>>): Prisma__EndpointStatClient<$Result.GetResult<Prisma.$EndpointStatPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more EndpointStats that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EndpointStatFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all EndpointStats
+     * const endpointStats = await prisma.endpointStat.findMany()
+     * 
+     * // Get first 10 EndpointStats
+     * const endpointStats = await prisma.endpointStat.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const endpointStatWithIdOnly = await prisma.endpointStat.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends EndpointStatFindManyArgs>(args?: SelectSubset<T, EndpointStatFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EndpointStatPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a EndpointStat.
+     * @param {EndpointStatCreateArgs} args - Arguments to create a EndpointStat.
+     * @example
+     * // Create one EndpointStat
+     * const EndpointStat = await prisma.endpointStat.create({
+     *   data: {
+     *     // ... data to create a EndpointStat
+     *   }
+     * })
+     * 
+     */
+    create<T extends EndpointStatCreateArgs>(args: SelectSubset<T, EndpointStatCreateArgs<ExtArgs>>): Prisma__EndpointStatClient<$Result.GetResult<Prisma.$EndpointStatPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many EndpointStats.
+     * @param {EndpointStatCreateManyArgs} args - Arguments to create many EndpointStats.
+     * @example
+     * // Create many EndpointStats
+     * const endpointStat = await prisma.endpointStat.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends EndpointStatCreateManyArgs>(args?: SelectSubset<T, EndpointStatCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many EndpointStats and returns the data saved in the database.
+     * @param {EndpointStatCreateManyAndReturnArgs} args - Arguments to create many EndpointStats.
+     * @example
+     * // Create many EndpointStats
+     * const endpointStat = await prisma.endpointStat.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many EndpointStats and only return the `id`
+     * const endpointStatWithIdOnly = await prisma.endpointStat.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends EndpointStatCreateManyAndReturnArgs>(args?: SelectSubset<T, EndpointStatCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EndpointStatPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a EndpointStat.
+     * @param {EndpointStatDeleteArgs} args - Arguments to delete one EndpointStat.
+     * @example
+     * // Delete one EndpointStat
+     * const EndpointStat = await prisma.endpointStat.delete({
+     *   where: {
+     *     // ... filter to delete one EndpointStat
+     *   }
+     * })
+     * 
+     */
+    delete<T extends EndpointStatDeleteArgs>(args: SelectSubset<T, EndpointStatDeleteArgs<ExtArgs>>): Prisma__EndpointStatClient<$Result.GetResult<Prisma.$EndpointStatPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one EndpointStat.
+     * @param {EndpointStatUpdateArgs} args - Arguments to update one EndpointStat.
+     * @example
+     * // Update one EndpointStat
+     * const endpointStat = await prisma.endpointStat.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends EndpointStatUpdateArgs>(args: SelectSubset<T, EndpointStatUpdateArgs<ExtArgs>>): Prisma__EndpointStatClient<$Result.GetResult<Prisma.$EndpointStatPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more EndpointStats.
+     * @param {EndpointStatDeleteManyArgs} args - Arguments to filter EndpointStats to delete.
+     * @example
+     * // Delete a few EndpointStats
+     * const { count } = await prisma.endpointStat.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends EndpointStatDeleteManyArgs>(args?: SelectSubset<T, EndpointStatDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more EndpointStats.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EndpointStatUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many EndpointStats
+     * const endpointStat = await prisma.endpointStat.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends EndpointStatUpdateManyArgs>(args: SelectSubset<T, EndpointStatUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more EndpointStats and returns the data updated in the database.
+     * @param {EndpointStatUpdateManyAndReturnArgs} args - Arguments to update many EndpointStats.
+     * @example
+     * // Update many EndpointStats
+     * const endpointStat = await prisma.endpointStat.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more EndpointStats and only return the `id`
+     * const endpointStatWithIdOnly = await prisma.endpointStat.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends EndpointStatUpdateManyAndReturnArgs>(args: SelectSubset<T, EndpointStatUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EndpointStatPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one EndpointStat.
+     * @param {EndpointStatUpsertArgs} args - Arguments to update or create a EndpointStat.
+     * @example
+     * // Update or create a EndpointStat
+     * const endpointStat = await prisma.endpointStat.upsert({
+     *   create: {
+     *     // ... data to create a EndpointStat
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the EndpointStat we want to update
+     *   }
+     * })
+     */
+    upsert<T extends EndpointStatUpsertArgs>(args: SelectSubset<T, EndpointStatUpsertArgs<ExtArgs>>): Prisma__EndpointStatClient<$Result.GetResult<Prisma.$EndpointStatPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of EndpointStats.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EndpointStatCountArgs} args - Arguments to filter EndpointStats to count.
+     * @example
+     * // Count the number of EndpointStats
+     * const count = await prisma.endpointStat.count({
+     *   where: {
+     *     // ... the filter for the EndpointStats we want to count
+     *   }
+     * })
+    **/
+    count<T extends EndpointStatCountArgs>(
+      args?: Subset<T, EndpointStatCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], EndpointStatCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a EndpointStat.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EndpointStatAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends EndpointStatAggregateArgs>(args: Subset<T, EndpointStatAggregateArgs>): Prisma.PrismaPromise<GetEndpointStatAggregateType<T>>
+
+    /**
+     * Group by EndpointStat.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EndpointStatGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends EndpointStatGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: EndpointStatGroupByArgs['orderBy'] }
+        : { orderBy?: EndpointStatGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, EndpointStatGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEndpointStatGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the EndpointStat model
+   */
+  readonly fields: EndpointStatFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for EndpointStat.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__EndpointStatClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the EndpointStat model
+   */
+  interface EndpointStatFieldRefs {
+    readonly id: FieldRef<"EndpointStat", 'Int'>
+    readonly method: FieldRef<"EndpointStat", 'String'>
+    readonly endpoint: FieldRef<"EndpointStat", 'String'>
+    readonly count: FieldRef<"EndpointStat", 'Int'>
+    readonly createdAt: FieldRef<"EndpointStat", 'DateTime'>
+    readonly updatedAt: FieldRef<"EndpointStat", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * EndpointStat findUnique
+   */
+  export type EndpointStatFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EndpointStat
+     */
+    select?: EndpointStatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EndpointStat
+     */
+    omit?: EndpointStatOmit<ExtArgs> | null
+    /**
+     * Filter, which EndpointStat to fetch.
+     */
+    where: EndpointStatWhereUniqueInput
+  }
+
+  /**
+   * EndpointStat findUniqueOrThrow
+   */
+  export type EndpointStatFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EndpointStat
+     */
+    select?: EndpointStatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EndpointStat
+     */
+    omit?: EndpointStatOmit<ExtArgs> | null
+    /**
+     * Filter, which EndpointStat to fetch.
+     */
+    where: EndpointStatWhereUniqueInput
+  }
+
+  /**
+   * EndpointStat findFirst
+   */
+  export type EndpointStatFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EndpointStat
+     */
+    select?: EndpointStatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EndpointStat
+     */
+    omit?: EndpointStatOmit<ExtArgs> | null
+    /**
+     * Filter, which EndpointStat to fetch.
+     */
+    where?: EndpointStatWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EndpointStats to fetch.
+     */
+    orderBy?: EndpointStatOrderByWithRelationInput | EndpointStatOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for EndpointStats.
+     */
+    cursor?: EndpointStatWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EndpointStats from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EndpointStats.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of EndpointStats.
+     */
+    distinct?: EndpointStatScalarFieldEnum | EndpointStatScalarFieldEnum[]
+  }
+
+  /**
+   * EndpointStat findFirstOrThrow
+   */
+  export type EndpointStatFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EndpointStat
+     */
+    select?: EndpointStatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EndpointStat
+     */
+    omit?: EndpointStatOmit<ExtArgs> | null
+    /**
+     * Filter, which EndpointStat to fetch.
+     */
+    where?: EndpointStatWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EndpointStats to fetch.
+     */
+    orderBy?: EndpointStatOrderByWithRelationInput | EndpointStatOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for EndpointStats.
+     */
+    cursor?: EndpointStatWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EndpointStats from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EndpointStats.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of EndpointStats.
+     */
+    distinct?: EndpointStatScalarFieldEnum | EndpointStatScalarFieldEnum[]
+  }
+
+  /**
+   * EndpointStat findMany
+   */
+  export type EndpointStatFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EndpointStat
+     */
+    select?: EndpointStatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EndpointStat
+     */
+    omit?: EndpointStatOmit<ExtArgs> | null
+    /**
+     * Filter, which EndpointStats to fetch.
+     */
+    where?: EndpointStatWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EndpointStats to fetch.
+     */
+    orderBy?: EndpointStatOrderByWithRelationInput | EndpointStatOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing EndpointStats.
+     */
+    cursor?: EndpointStatWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EndpointStats from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EndpointStats.
+     */
+    skip?: number
+    distinct?: EndpointStatScalarFieldEnum | EndpointStatScalarFieldEnum[]
+  }
+
+  /**
+   * EndpointStat create
+   */
+  export type EndpointStatCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EndpointStat
+     */
+    select?: EndpointStatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EndpointStat
+     */
+    omit?: EndpointStatOmit<ExtArgs> | null
+    /**
+     * The data needed to create a EndpointStat.
+     */
+    data: XOR<EndpointStatCreateInput, EndpointStatUncheckedCreateInput>
+  }
+
+  /**
+   * EndpointStat createMany
+   */
+  export type EndpointStatCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many EndpointStats.
+     */
+    data: EndpointStatCreateManyInput | EndpointStatCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * EndpointStat createManyAndReturn
+   */
+  export type EndpointStatCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EndpointStat
+     */
+    select?: EndpointStatSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the EndpointStat
+     */
+    omit?: EndpointStatOmit<ExtArgs> | null
+    /**
+     * The data used to create many EndpointStats.
+     */
+    data: EndpointStatCreateManyInput | EndpointStatCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * EndpointStat update
+   */
+  export type EndpointStatUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EndpointStat
+     */
+    select?: EndpointStatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EndpointStat
+     */
+    omit?: EndpointStatOmit<ExtArgs> | null
+    /**
+     * The data needed to update a EndpointStat.
+     */
+    data: XOR<EndpointStatUpdateInput, EndpointStatUncheckedUpdateInput>
+    /**
+     * Choose, which EndpointStat to update.
+     */
+    where: EndpointStatWhereUniqueInput
+  }
+
+  /**
+   * EndpointStat updateMany
+   */
+  export type EndpointStatUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update EndpointStats.
+     */
+    data: XOR<EndpointStatUpdateManyMutationInput, EndpointStatUncheckedUpdateManyInput>
+    /**
+     * Filter which EndpointStats to update
+     */
+    where?: EndpointStatWhereInput
+    /**
+     * Limit how many EndpointStats to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * EndpointStat updateManyAndReturn
+   */
+  export type EndpointStatUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EndpointStat
+     */
+    select?: EndpointStatSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the EndpointStat
+     */
+    omit?: EndpointStatOmit<ExtArgs> | null
+    /**
+     * The data used to update EndpointStats.
+     */
+    data: XOR<EndpointStatUpdateManyMutationInput, EndpointStatUncheckedUpdateManyInput>
+    /**
+     * Filter which EndpointStats to update
+     */
+    where?: EndpointStatWhereInput
+    /**
+     * Limit how many EndpointStats to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * EndpointStat upsert
+   */
+  export type EndpointStatUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EndpointStat
+     */
+    select?: EndpointStatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EndpointStat
+     */
+    omit?: EndpointStatOmit<ExtArgs> | null
+    /**
+     * The filter to search for the EndpointStat to update in case it exists.
+     */
+    where: EndpointStatWhereUniqueInput
+    /**
+     * In case the EndpointStat found by the `where` argument doesn't exist, create a new EndpointStat with this data.
+     */
+    create: XOR<EndpointStatCreateInput, EndpointStatUncheckedCreateInput>
+    /**
+     * In case the EndpointStat was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<EndpointStatUpdateInput, EndpointStatUncheckedUpdateInput>
+  }
+
+  /**
+   * EndpointStat delete
+   */
+  export type EndpointStatDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EndpointStat
+     */
+    select?: EndpointStatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EndpointStat
+     */
+    omit?: EndpointStatOmit<ExtArgs> | null
+    /**
+     * Filter which EndpointStat to delete.
+     */
+    where: EndpointStatWhereUniqueInput
+  }
+
+  /**
+   * EndpointStat deleteMany
+   */
+  export type EndpointStatDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which EndpointStats to delete
+     */
+    where?: EndpointStatWhereInput
+    /**
+     * Limit how many EndpointStats to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * EndpointStat without action
+   */
+  export type EndpointStatDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EndpointStat
+     */
+    select?: EndpointStatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EndpointStat
+     */
+    omit?: EndpointStatOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model UserApiUsage
+   */
+
+  export type AggregateUserApiUsage = {
+    _count: UserApiUsageCountAggregateOutputType | null
+    _avg: UserApiUsageAvgAggregateOutputType | null
+    _sum: UserApiUsageSumAggregateOutputType | null
+    _min: UserApiUsageMinAggregateOutputType | null
+    _max: UserApiUsageMaxAggregateOutputType | null
+  }
+
+  export type UserApiUsageAvgAggregateOutputType = {
+    id: number | null
+    count: number | null
+  }
+
+  export type UserApiUsageSumAggregateOutputType = {
+    id: number | null
+    count: number | null
+  }
+
+  export type UserApiUsageMinAggregateOutputType = {
+    id: number | null
+    userId: string | null
+    method: string | null
+    endpoint: string | null
+    count: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type UserApiUsageMaxAggregateOutputType = {
+    id: number | null
+    userId: string | null
+    method: string | null
+    endpoint: string | null
+    count: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type UserApiUsageCountAggregateOutputType = {
+    id: number
+    userId: number
+    method: number
+    endpoint: number
+    count: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type UserApiUsageAvgAggregateInputType = {
+    id?: true
+    count?: true
+  }
+
+  export type UserApiUsageSumAggregateInputType = {
+    id?: true
+    count?: true
+  }
+
+  export type UserApiUsageMinAggregateInputType = {
+    id?: true
+    userId?: true
+    method?: true
+    endpoint?: true
+    count?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type UserApiUsageMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    method?: true
+    endpoint?: true
+    count?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type UserApiUsageCountAggregateInputType = {
+    id?: true
+    userId?: true
+    method?: true
+    endpoint?: true
+    count?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type UserApiUsageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserApiUsage to aggregate.
+     */
+    where?: UserApiUsageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserApiUsages to fetch.
+     */
+    orderBy?: UserApiUsageOrderByWithRelationInput | UserApiUsageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UserApiUsageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserApiUsages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserApiUsages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned UserApiUsages
+    **/
+    _count?: true | UserApiUsageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: UserApiUsageAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: UserApiUsageSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UserApiUsageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UserApiUsageMaxAggregateInputType
+  }
+
+  export type GetUserApiUsageAggregateType<T extends UserApiUsageAggregateArgs> = {
+        [P in keyof T & keyof AggregateUserApiUsage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUserApiUsage[P]>
+      : GetScalarType<T[P], AggregateUserApiUsage[P]>
+  }
+
+
+
+
+  export type UserApiUsageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserApiUsageWhereInput
+    orderBy?: UserApiUsageOrderByWithAggregationInput | UserApiUsageOrderByWithAggregationInput[]
+    by: UserApiUsageScalarFieldEnum[] | UserApiUsageScalarFieldEnum
+    having?: UserApiUsageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UserApiUsageCountAggregateInputType | true
+    _avg?: UserApiUsageAvgAggregateInputType
+    _sum?: UserApiUsageSumAggregateInputType
+    _min?: UserApiUsageMinAggregateInputType
+    _max?: UserApiUsageMaxAggregateInputType
+  }
+
+  export type UserApiUsageGroupByOutputType = {
+    id: number
+    userId: string
+    method: string
+    endpoint: string
+    count: number
+    createdAt: Date
+    updatedAt: Date
+    _count: UserApiUsageCountAggregateOutputType | null
+    _avg: UserApiUsageAvgAggregateOutputType | null
+    _sum: UserApiUsageSumAggregateOutputType | null
+    _min: UserApiUsageMinAggregateOutputType | null
+    _max: UserApiUsageMaxAggregateOutputType | null
+  }
+
+  type GetUserApiUsageGroupByPayload<T extends UserApiUsageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UserApiUsageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UserApiUsageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UserApiUsageGroupByOutputType[P]>
+            : GetScalarType<T[P], UserApiUsageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UserApiUsageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    method?: boolean
+    endpoint?: boolean
+    count?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userApiUsage"]>
+
+  export type UserApiUsageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    method?: boolean
+    endpoint?: boolean
+    count?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userApiUsage"]>
+
+  export type UserApiUsageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    method?: boolean
+    endpoint?: boolean
+    count?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userApiUsage"]>
+
+  export type UserApiUsageSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    method?: boolean
+    endpoint?: boolean
+    count?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type UserApiUsageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "method" | "endpoint" | "count" | "createdAt" | "updatedAt", ExtArgs["result"]["userApiUsage"]>
+  export type UserApiUsageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type UserApiUsageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type UserApiUsageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $UserApiUsagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "UserApiUsage"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      userId: string
+      method: string
+      endpoint: string
+      count: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["userApiUsage"]>
+    composites: {}
+  }
+
+  type UserApiUsageGetPayload<S extends boolean | null | undefined | UserApiUsageDefaultArgs> = $Result.GetResult<Prisma.$UserApiUsagePayload, S>
+
+  type UserApiUsageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<UserApiUsageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UserApiUsageCountAggregateInputType | true
+    }
+
+  export interface UserApiUsageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserApiUsage'], meta: { name: 'UserApiUsage' } }
+    /**
+     * Find zero or one UserApiUsage that matches the filter.
+     * @param {UserApiUsageFindUniqueArgs} args - Arguments to find a UserApiUsage
+     * @example
+     * // Get one UserApiUsage
+     * const userApiUsage = await prisma.userApiUsage.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends UserApiUsageFindUniqueArgs>(args: SelectSubset<T, UserApiUsageFindUniqueArgs<ExtArgs>>): Prisma__UserApiUsageClient<$Result.GetResult<Prisma.$UserApiUsagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one UserApiUsage that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {UserApiUsageFindUniqueOrThrowArgs} args - Arguments to find a UserApiUsage
+     * @example
+     * // Get one UserApiUsage
+     * const userApiUsage = await prisma.userApiUsage.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends UserApiUsageFindUniqueOrThrowArgs>(args: SelectSubset<T, UserApiUsageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserApiUsageClient<$Result.GetResult<Prisma.$UserApiUsagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserApiUsage that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserApiUsageFindFirstArgs} args - Arguments to find a UserApiUsage
+     * @example
+     * // Get one UserApiUsage
+     * const userApiUsage = await prisma.userApiUsage.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends UserApiUsageFindFirstArgs>(args?: SelectSubset<T, UserApiUsageFindFirstArgs<ExtArgs>>): Prisma__UserApiUsageClient<$Result.GetResult<Prisma.$UserApiUsagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserApiUsage that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserApiUsageFindFirstOrThrowArgs} args - Arguments to find a UserApiUsage
+     * @example
+     * // Get one UserApiUsage
+     * const userApiUsage = await prisma.userApiUsage.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends UserApiUsageFindFirstOrThrowArgs>(args?: SelectSubset<T, UserApiUsageFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserApiUsageClient<$Result.GetResult<Prisma.$UserApiUsagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more UserApiUsages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserApiUsageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all UserApiUsages
+     * const userApiUsages = await prisma.userApiUsage.findMany()
+     * 
+     * // Get first 10 UserApiUsages
+     * const userApiUsages = await prisma.userApiUsage.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const userApiUsageWithIdOnly = await prisma.userApiUsage.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends UserApiUsageFindManyArgs>(args?: SelectSubset<T, UserApiUsageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserApiUsagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a UserApiUsage.
+     * @param {UserApiUsageCreateArgs} args - Arguments to create a UserApiUsage.
+     * @example
+     * // Create one UserApiUsage
+     * const UserApiUsage = await prisma.userApiUsage.create({
+     *   data: {
+     *     // ... data to create a UserApiUsage
+     *   }
+     * })
+     * 
+     */
+    create<T extends UserApiUsageCreateArgs>(args: SelectSubset<T, UserApiUsageCreateArgs<ExtArgs>>): Prisma__UserApiUsageClient<$Result.GetResult<Prisma.$UserApiUsagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many UserApiUsages.
+     * @param {UserApiUsageCreateManyArgs} args - Arguments to create many UserApiUsages.
+     * @example
+     * // Create many UserApiUsages
+     * const userApiUsage = await prisma.userApiUsage.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends UserApiUsageCreateManyArgs>(args?: SelectSubset<T, UserApiUsageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many UserApiUsages and returns the data saved in the database.
+     * @param {UserApiUsageCreateManyAndReturnArgs} args - Arguments to create many UserApiUsages.
+     * @example
+     * // Create many UserApiUsages
+     * const userApiUsage = await prisma.userApiUsage.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many UserApiUsages and only return the `id`
+     * const userApiUsageWithIdOnly = await prisma.userApiUsage.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends UserApiUsageCreateManyAndReturnArgs>(args?: SelectSubset<T, UserApiUsageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserApiUsagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a UserApiUsage.
+     * @param {UserApiUsageDeleteArgs} args - Arguments to delete one UserApiUsage.
+     * @example
+     * // Delete one UserApiUsage
+     * const UserApiUsage = await prisma.userApiUsage.delete({
+     *   where: {
+     *     // ... filter to delete one UserApiUsage
+     *   }
+     * })
+     * 
+     */
+    delete<T extends UserApiUsageDeleteArgs>(args: SelectSubset<T, UserApiUsageDeleteArgs<ExtArgs>>): Prisma__UserApiUsageClient<$Result.GetResult<Prisma.$UserApiUsagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one UserApiUsage.
+     * @param {UserApiUsageUpdateArgs} args - Arguments to update one UserApiUsage.
+     * @example
+     * // Update one UserApiUsage
+     * const userApiUsage = await prisma.userApiUsage.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends UserApiUsageUpdateArgs>(args: SelectSubset<T, UserApiUsageUpdateArgs<ExtArgs>>): Prisma__UserApiUsageClient<$Result.GetResult<Prisma.$UserApiUsagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more UserApiUsages.
+     * @param {UserApiUsageDeleteManyArgs} args - Arguments to filter UserApiUsages to delete.
+     * @example
+     * // Delete a few UserApiUsages
+     * const { count } = await prisma.userApiUsage.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends UserApiUsageDeleteManyArgs>(args?: SelectSubset<T, UserApiUsageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserApiUsages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserApiUsageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many UserApiUsages
+     * const userApiUsage = await prisma.userApiUsage.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends UserApiUsageUpdateManyArgs>(args: SelectSubset<T, UserApiUsageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserApiUsages and returns the data updated in the database.
+     * @param {UserApiUsageUpdateManyAndReturnArgs} args - Arguments to update many UserApiUsages.
+     * @example
+     * // Update many UserApiUsages
+     * const userApiUsage = await prisma.userApiUsage.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more UserApiUsages and only return the `id`
+     * const userApiUsageWithIdOnly = await prisma.userApiUsage.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends UserApiUsageUpdateManyAndReturnArgs>(args: SelectSubset<T, UserApiUsageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserApiUsagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one UserApiUsage.
+     * @param {UserApiUsageUpsertArgs} args - Arguments to update or create a UserApiUsage.
+     * @example
+     * // Update or create a UserApiUsage
+     * const userApiUsage = await prisma.userApiUsage.upsert({
+     *   create: {
+     *     // ... data to create a UserApiUsage
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the UserApiUsage we want to update
+     *   }
+     * })
+     */
+    upsert<T extends UserApiUsageUpsertArgs>(args: SelectSubset<T, UserApiUsageUpsertArgs<ExtArgs>>): Prisma__UserApiUsageClient<$Result.GetResult<Prisma.$UserApiUsagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of UserApiUsages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserApiUsageCountArgs} args - Arguments to filter UserApiUsages to count.
+     * @example
+     * // Count the number of UserApiUsages
+     * const count = await prisma.userApiUsage.count({
+     *   where: {
+     *     // ... the filter for the UserApiUsages we want to count
+     *   }
+     * })
+    **/
+    count<T extends UserApiUsageCountArgs>(
+      args?: Subset<T, UserApiUsageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UserApiUsageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a UserApiUsage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserApiUsageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UserApiUsageAggregateArgs>(args: Subset<T, UserApiUsageAggregateArgs>): Prisma.PrismaPromise<GetUserApiUsageAggregateType<T>>
+
+    /**
+     * Group by UserApiUsage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserApiUsageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UserApiUsageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UserApiUsageGroupByArgs['orderBy'] }
+        : { orderBy?: UserApiUsageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UserApiUsageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserApiUsageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the UserApiUsage model
+   */
+  readonly fields: UserApiUsageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for UserApiUsage.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UserApiUsageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the UserApiUsage model
+   */
+  interface UserApiUsageFieldRefs {
+    readonly id: FieldRef<"UserApiUsage", 'Int'>
+    readonly userId: FieldRef<"UserApiUsage", 'String'>
+    readonly method: FieldRef<"UserApiUsage", 'String'>
+    readonly endpoint: FieldRef<"UserApiUsage", 'String'>
+    readonly count: FieldRef<"UserApiUsage", 'Int'>
+    readonly createdAt: FieldRef<"UserApiUsage", 'DateTime'>
+    readonly updatedAt: FieldRef<"UserApiUsage", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * UserApiUsage findUnique
+   */
+  export type UserApiUsageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserApiUsage
+     */
+    select?: UserApiUsageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserApiUsage
+     */
+    omit?: UserApiUsageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserApiUsageInclude<ExtArgs> | null
+    /**
+     * Filter, which UserApiUsage to fetch.
+     */
+    where: UserApiUsageWhereUniqueInput
+  }
+
+  /**
+   * UserApiUsage findUniqueOrThrow
+   */
+  export type UserApiUsageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserApiUsage
+     */
+    select?: UserApiUsageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserApiUsage
+     */
+    omit?: UserApiUsageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserApiUsageInclude<ExtArgs> | null
+    /**
+     * Filter, which UserApiUsage to fetch.
+     */
+    where: UserApiUsageWhereUniqueInput
+  }
+
+  /**
+   * UserApiUsage findFirst
+   */
+  export type UserApiUsageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserApiUsage
+     */
+    select?: UserApiUsageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserApiUsage
+     */
+    omit?: UserApiUsageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserApiUsageInclude<ExtArgs> | null
+    /**
+     * Filter, which UserApiUsage to fetch.
+     */
+    where?: UserApiUsageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserApiUsages to fetch.
+     */
+    orderBy?: UserApiUsageOrderByWithRelationInput | UserApiUsageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserApiUsages.
+     */
+    cursor?: UserApiUsageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserApiUsages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserApiUsages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserApiUsages.
+     */
+    distinct?: UserApiUsageScalarFieldEnum | UserApiUsageScalarFieldEnum[]
+  }
+
+  /**
+   * UserApiUsage findFirstOrThrow
+   */
+  export type UserApiUsageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserApiUsage
+     */
+    select?: UserApiUsageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserApiUsage
+     */
+    omit?: UserApiUsageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserApiUsageInclude<ExtArgs> | null
+    /**
+     * Filter, which UserApiUsage to fetch.
+     */
+    where?: UserApiUsageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserApiUsages to fetch.
+     */
+    orderBy?: UserApiUsageOrderByWithRelationInput | UserApiUsageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserApiUsages.
+     */
+    cursor?: UserApiUsageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserApiUsages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserApiUsages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserApiUsages.
+     */
+    distinct?: UserApiUsageScalarFieldEnum | UserApiUsageScalarFieldEnum[]
+  }
+
+  /**
+   * UserApiUsage findMany
+   */
+  export type UserApiUsageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserApiUsage
+     */
+    select?: UserApiUsageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserApiUsage
+     */
+    omit?: UserApiUsageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserApiUsageInclude<ExtArgs> | null
+    /**
+     * Filter, which UserApiUsages to fetch.
+     */
+    where?: UserApiUsageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserApiUsages to fetch.
+     */
+    orderBy?: UserApiUsageOrderByWithRelationInput | UserApiUsageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing UserApiUsages.
+     */
+    cursor?: UserApiUsageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserApiUsages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserApiUsages.
+     */
+    skip?: number
+    distinct?: UserApiUsageScalarFieldEnum | UserApiUsageScalarFieldEnum[]
+  }
+
+  /**
+   * UserApiUsage create
+   */
+  export type UserApiUsageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserApiUsage
+     */
+    select?: UserApiUsageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserApiUsage
+     */
+    omit?: UserApiUsageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserApiUsageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a UserApiUsage.
+     */
+    data: XOR<UserApiUsageCreateInput, UserApiUsageUncheckedCreateInput>
+  }
+
+  /**
+   * UserApiUsage createMany
+   */
+  export type UserApiUsageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many UserApiUsages.
+     */
+    data: UserApiUsageCreateManyInput | UserApiUsageCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * UserApiUsage createManyAndReturn
+   */
+  export type UserApiUsageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserApiUsage
+     */
+    select?: UserApiUsageSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserApiUsage
+     */
+    omit?: UserApiUsageOmit<ExtArgs> | null
+    /**
+     * The data used to create many UserApiUsages.
+     */
+    data: UserApiUsageCreateManyInput | UserApiUsageCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserApiUsageIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * UserApiUsage update
+   */
+  export type UserApiUsageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserApiUsage
+     */
+    select?: UserApiUsageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserApiUsage
+     */
+    omit?: UserApiUsageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserApiUsageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a UserApiUsage.
+     */
+    data: XOR<UserApiUsageUpdateInput, UserApiUsageUncheckedUpdateInput>
+    /**
+     * Choose, which UserApiUsage to update.
+     */
+    where: UserApiUsageWhereUniqueInput
+  }
+
+  /**
+   * UserApiUsage updateMany
+   */
+  export type UserApiUsageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update UserApiUsages.
+     */
+    data: XOR<UserApiUsageUpdateManyMutationInput, UserApiUsageUncheckedUpdateManyInput>
+    /**
+     * Filter which UserApiUsages to update
+     */
+    where?: UserApiUsageWhereInput
+    /**
+     * Limit how many UserApiUsages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserApiUsage updateManyAndReturn
+   */
+  export type UserApiUsageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserApiUsage
+     */
+    select?: UserApiUsageSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserApiUsage
+     */
+    omit?: UserApiUsageOmit<ExtArgs> | null
+    /**
+     * The data used to update UserApiUsages.
+     */
+    data: XOR<UserApiUsageUpdateManyMutationInput, UserApiUsageUncheckedUpdateManyInput>
+    /**
+     * Filter which UserApiUsages to update
+     */
+    where?: UserApiUsageWhereInput
+    /**
+     * Limit how many UserApiUsages to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserApiUsageIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * UserApiUsage upsert
+   */
+  export type UserApiUsageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserApiUsage
+     */
+    select?: UserApiUsageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserApiUsage
+     */
+    omit?: UserApiUsageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserApiUsageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the UserApiUsage to update in case it exists.
+     */
+    where: UserApiUsageWhereUniqueInput
+    /**
+     * In case the UserApiUsage found by the `where` argument doesn't exist, create a new UserApiUsage with this data.
+     */
+    create: XOR<UserApiUsageCreateInput, UserApiUsageUncheckedCreateInput>
+    /**
+     * In case the UserApiUsage was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UserApiUsageUpdateInput, UserApiUsageUncheckedUpdateInput>
+  }
+
+  /**
+   * UserApiUsage delete
+   */
+  export type UserApiUsageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserApiUsage
+     */
+    select?: UserApiUsageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserApiUsage
+     */
+    omit?: UserApiUsageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserApiUsageInclude<ExtArgs> | null
+    /**
+     * Filter which UserApiUsage to delete.
+     */
+    where: UserApiUsageWhereUniqueInput
+  }
+
+  /**
+   * UserApiUsage deleteMany
+   */
+  export type UserApiUsageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserApiUsages to delete
+     */
+    where?: UserApiUsageWhereInput
+    /**
+     * Limit how many UserApiUsages to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserApiUsage without action
+   */
+  export type UserApiUsageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserApiUsage
+     */
+    select?: UserApiUsageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserApiUsage
+     */
+    omit?: UserApiUsageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserApiUsageInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -5584,6 +8031,8 @@ export namespace Prisma {
     email: 'email',
     emailVerified: 'emailVerified',
     image: 'image',
+    role: 'role',
+    totalApiRequests: 'totalApiRequests',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -5634,6 +8083,31 @@ export namespace Prisma {
   };
 
   export type VerificationScalarFieldEnum = (typeof VerificationScalarFieldEnum)[keyof typeof VerificationScalarFieldEnum]
+
+
+  export const EndpointStatScalarFieldEnum: {
+    id: 'id',
+    method: 'method',
+    endpoint: 'endpoint',
+    count: 'count',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type EndpointStatScalarFieldEnum = (typeof EndpointStatScalarFieldEnum)[keyof typeof EndpointStatScalarFieldEnum]
+
+
+  export const UserApiUsageScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    method: 'method',
+    endpoint: 'endpoint',
+    count: 'count',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type UserApiUsageScalarFieldEnum = (typeof UserApiUsageScalarFieldEnum)[keyof typeof UserApiUsageScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -5687,6 +8161,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -5701,16 +8189,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Int'
+   * Reference to a field of type 'Float'
    */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
     
 
 
   /**
-   * Reference to a field of type 'Int[]'
+   * Reference to a field of type 'Float[]'
    */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
   /**
    * Deep Input Types
@@ -5726,10 +8214,13 @@ export namespace Prisma {
     email?: StringFilter<"User"> | string
     emailVerified?: BoolFilter<"User"> | boolean
     image?: StringNullableFilter<"User"> | string | null
+    role?: StringFilter<"User"> | string
+    totalApiRequests?: IntFilter<"User"> | number
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     sessions?: SessionListRelationFilter
     accounts?: AccountListRelationFilter
+    apiUsage?: UserApiUsageListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -5738,10 +8229,13 @@ export namespace Prisma {
     email?: SortOrder
     emailVerified?: SortOrder
     image?: SortOrderInput | SortOrder
+    role?: SortOrder
+    totalApiRequests?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     sessions?: SessionOrderByRelationAggregateInput
     accounts?: AccountOrderByRelationAggregateInput
+    apiUsage?: UserApiUsageOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -5753,10 +8247,13 @@ export namespace Prisma {
     name?: StringFilter<"User"> | string
     emailVerified?: BoolFilter<"User"> | boolean
     image?: StringNullableFilter<"User"> | string | null
+    role?: StringFilter<"User"> | string
+    totalApiRequests?: IntFilter<"User"> | number
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     sessions?: SessionListRelationFilter
     accounts?: AccountListRelationFilter
+    apiUsage?: UserApiUsageListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -5765,11 +8262,15 @@ export namespace Prisma {
     email?: SortOrder
     emailVerified?: SortOrder
     image?: SortOrderInput | SortOrder
+    role?: SortOrder
+    totalApiRequests?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
+    _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
+    _sum?: UserSumOrderByAggregateInput
   }
 
   export type UserScalarWhereWithAggregatesInput = {
@@ -5781,6 +8282,8 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"User"> | string
     emailVerified?: BoolWithAggregatesFilter<"User"> | boolean
     image?: StringNullableWithAggregatesFilter<"User"> | string | null
+    role?: StringWithAggregatesFilter<"User"> | string
+    totalApiRequests?: IntWithAggregatesFilter<"User"> | number
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
@@ -6007,16 +8510,147 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Verification"> | Date | string
   }
 
+  export type EndpointStatWhereInput = {
+    AND?: EndpointStatWhereInput | EndpointStatWhereInput[]
+    OR?: EndpointStatWhereInput[]
+    NOT?: EndpointStatWhereInput | EndpointStatWhereInput[]
+    id?: IntFilter<"EndpointStat"> | number
+    method?: StringFilter<"EndpointStat"> | string
+    endpoint?: StringFilter<"EndpointStat"> | string
+    count?: IntFilter<"EndpointStat"> | number
+    createdAt?: DateTimeFilter<"EndpointStat"> | Date | string
+    updatedAt?: DateTimeFilter<"EndpointStat"> | Date | string
+  }
+
+  export type EndpointStatOrderByWithRelationInput = {
+    id?: SortOrder
+    method?: SortOrder
+    endpoint?: SortOrder
+    count?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EndpointStatWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    method_endpoint?: EndpointStatMethodEndpointCompoundUniqueInput
+    AND?: EndpointStatWhereInput | EndpointStatWhereInput[]
+    OR?: EndpointStatWhereInput[]
+    NOT?: EndpointStatWhereInput | EndpointStatWhereInput[]
+    method?: StringFilter<"EndpointStat"> | string
+    endpoint?: StringFilter<"EndpointStat"> | string
+    count?: IntFilter<"EndpointStat"> | number
+    createdAt?: DateTimeFilter<"EndpointStat"> | Date | string
+    updatedAt?: DateTimeFilter<"EndpointStat"> | Date | string
+  }, "id" | "method_endpoint">
+
+  export type EndpointStatOrderByWithAggregationInput = {
+    id?: SortOrder
+    method?: SortOrder
+    endpoint?: SortOrder
+    count?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: EndpointStatCountOrderByAggregateInput
+    _avg?: EndpointStatAvgOrderByAggregateInput
+    _max?: EndpointStatMaxOrderByAggregateInput
+    _min?: EndpointStatMinOrderByAggregateInput
+    _sum?: EndpointStatSumOrderByAggregateInput
+  }
+
+  export type EndpointStatScalarWhereWithAggregatesInput = {
+    AND?: EndpointStatScalarWhereWithAggregatesInput | EndpointStatScalarWhereWithAggregatesInput[]
+    OR?: EndpointStatScalarWhereWithAggregatesInput[]
+    NOT?: EndpointStatScalarWhereWithAggregatesInput | EndpointStatScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"EndpointStat"> | number
+    method?: StringWithAggregatesFilter<"EndpointStat"> | string
+    endpoint?: StringWithAggregatesFilter<"EndpointStat"> | string
+    count?: IntWithAggregatesFilter<"EndpointStat"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"EndpointStat"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"EndpointStat"> | Date | string
+  }
+
+  export type UserApiUsageWhereInput = {
+    AND?: UserApiUsageWhereInput | UserApiUsageWhereInput[]
+    OR?: UserApiUsageWhereInput[]
+    NOT?: UserApiUsageWhereInput | UserApiUsageWhereInput[]
+    id?: IntFilter<"UserApiUsage"> | number
+    userId?: StringFilter<"UserApiUsage"> | string
+    method?: StringFilter<"UserApiUsage"> | string
+    endpoint?: StringFilter<"UserApiUsage"> | string
+    count?: IntFilter<"UserApiUsage"> | number
+    createdAt?: DateTimeFilter<"UserApiUsage"> | Date | string
+    updatedAt?: DateTimeFilter<"UserApiUsage"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type UserApiUsageOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    method?: SortOrder
+    endpoint?: SortOrder
+    count?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type UserApiUsageWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    userId_method_endpoint?: UserApiUsageUserIdMethodEndpointCompoundUniqueInput
+    AND?: UserApiUsageWhereInput | UserApiUsageWhereInput[]
+    OR?: UserApiUsageWhereInput[]
+    NOT?: UserApiUsageWhereInput | UserApiUsageWhereInput[]
+    userId?: StringFilter<"UserApiUsage"> | string
+    method?: StringFilter<"UserApiUsage"> | string
+    endpoint?: StringFilter<"UserApiUsage"> | string
+    count?: IntFilter<"UserApiUsage"> | number
+    createdAt?: DateTimeFilter<"UserApiUsage"> | Date | string
+    updatedAt?: DateTimeFilter<"UserApiUsage"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "userId_method_endpoint">
+
+  export type UserApiUsageOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    method?: SortOrder
+    endpoint?: SortOrder
+    count?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: UserApiUsageCountOrderByAggregateInput
+    _avg?: UserApiUsageAvgOrderByAggregateInput
+    _max?: UserApiUsageMaxOrderByAggregateInput
+    _min?: UserApiUsageMinOrderByAggregateInput
+    _sum?: UserApiUsageSumOrderByAggregateInput
+  }
+
+  export type UserApiUsageScalarWhereWithAggregatesInput = {
+    AND?: UserApiUsageScalarWhereWithAggregatesInput | UserApiUsageScalarWhereWithAggregatesInput[]
+    OR?: UserApiUsageScalarWhereWithAggregatesInput[]
+    NOT?: UserApiUsageScalarWhereWithAggregatesInput | UserApiUsageScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"UserApiUsage"> | number
+    userId?: StringWithAggregatesFilter<"UserApiUsage"> | string
+    method?: StringWithAggregatesFilter<"UserApiUsage"> | string
+    endpoint?: StringWithAggregatesFilter<"UserApiUsage"> | string
+    count?: IntWithAggregatesFilter<"UserApiUsage"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"UserApiUsage"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"UserApiUsage"> | Date | string
+  }
+
   export type UserCreateInput = {
     id: string
     name: string
     email: string
     emailVerified?: boolean
     image?: string | null
+    role?: string
+    totalApiRequests?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     sessions?: SessionCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
+    apiUsage?: UserApiUsageCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -6025,10 +8659,13 @@ export namespace Prisma {
     email: string
     emailVerified?: boolean
     image?: string | null
+    role?: string
+    totalApiRequests?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    apiUsage?: UserApiUsageUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -6037,10 +8674,13 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    totalApiRequests?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sessions?: SessionUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
+    apiUsage?: UserApiUsageUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -6049,10 +8689,13 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    totalApiRequests?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    apiUsage?: UserApiUsageUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -6061,6 +8704,8 @@ export namespace Prisma {
     email: string
     emailVerified?: boolean
     image?: string | null
+    role?: string
+    totalApiRequests?: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -6071,6 +8716,8 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    totalApiRequests?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6081,6 +8728,8 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    totalApiRequests?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6335,6 +8984,132 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type EndpointStatCreateInput = {
+    method: string
+    endpoint: string
+    count?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type EndpointStatUncheckedCreateInput = {
+    id?: number
+    method: string
+    endpoint: string
+    count?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type EndpointStatUpdateInput = {
+    method?: StringFieldUpdateOperationsInput | string
+    endpoint?: StringFieldUpdateOperationsInput | string
+    count?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EndpointStatUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    method?: StringFieldUpdateOperationsInput | string
+    endpoint?: StringFieldUpdateOperationsInput | string
+    count?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EndpointStatCreateManyInput = {
+    id?: number
+    method: string
+    endpoint: string
+    count?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type EndpointStatUpdateManyMutationInput = {
+    method?: StringFieldUpdateOperationsInput | string
+    endpoint?: StringFieldUpdateOperationsInput | string
+    count?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EndpointStatUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    method?: StringFieldUpdateOperationsInput | string
+    endpoint?: StringFieldUpdateOperationsInput | string
+    count?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserApiUsageCreateInput = {
+    method: string
+    endpoint: string
+    count?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutApiUsageInput
+  }
+
+  export type UserApiUsageUncheckedCreateInput = {
+    id?: number
+    userId: string
+    method: string
+    endpoint: string
+    count?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserApiUsageUpdateInput = {
+    method?: StringFieldUpdateOperationsInput | string
+    endpoint?: StringFieldUpdateOperationsInput | string
+    count?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutApiUsageNestedInput
+  }
+
+  export type UserApiUsageUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
+    method?: StringFieldUpdateOperationsInput | string
+    endpoint?: StringFieldUpdateOperationsInput | string
+    count?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserApiUsageCreateManyInput = {
+    id?: number
+    userId: string
+    method: string
+    endpoint: string
+    count?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserApiUsageUpdateManyMutationInput = {
+    method?: StringFieldUpdateOperationsInput | string
+    endpoint?: StringFieldUpdateOperationsInput | string
+    count?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserApiUsageUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
+    method?: StringFieldUpdateOperationsInput | string
+    endpoint?: StringFieldUpdateOperationsInput | string
+    count?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -6370,6 +9145,17 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -6393,6 +9179,12 @@ export namespace Prisma {
     none?: AccountWhereInput
   }
 
+  export type UserApiUsageListRelationFilter = {
+    every?: UserApiUsageWhereInput
+    some?: UserApiUsageWhereInput
+    none?: UserApiUsageWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -6406,14 +9198,24 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type UserApiUsageOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
     emailVerified?: SortOrder
     image?: SortOrder
+    role?: SortOrder
+    totalApiRequests?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type UserAvgOrderByAggregateInput = {
+    totalApiRequests?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -6422,6 +9224,8 @@ export namespace Prisma {
     email?: SortOrder
     emailVerified?: SortOrder
     image?: SortOrder
+    role?: SortOrder
+    totalApiRequests?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -6432,8 +9236,14 @@ export namespace Prisma {
     email?: SortOrder
     emailVerified?: SortOrder
     image?: SortOrder
+    role?: SortOrder
+    totalApiRequests?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type UserSumOrderByAggregateInput = {
+    totalApiRequests?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -6478,6 +9288,22 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -6632,6 +9458,94 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type EndpointStatMethodEndpointCompoundUniqueInput = {
+    method: string
+    endpoint: string
+  }
+
+  export type EndpointStatCountOrderByAggregateInput = {
+    id?: SortOrder
+    method?: SortOrder
+    endpoint?: SortOrder
+    count?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EndpointStatAvgOrderByAggregateInput = {
+    id?: SortOrder
+    count?: SortOrder
+  }
+
+  export type EndpointStatMaxOrderByAggregateInput = {
+    id?: SortOrder
+    method?: SortOrder
+    endpoint?: SortOrder
+    count?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EndpointStatMinOrderByAggregateInput = {
+    id?: SortOrder
+    method?: SortOrder
+    endpoint?: SortOrder
+    count?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EndpointStatSumOrderByAggregateInput = {
+    id?: SortOrder
+    count?: SortOrder
+  }
+
+  export type UserApiUsageUserIdMethodEndpointCompoundUniqueInput = {
+    userId: string
+    method: string
+    endpoint: string
+  }
+
+  export type UserApiUsageCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    method?: SortOrder
+    endpoint?: SortOrder
+    count?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserApiUsageAvgOrderByAggregateInput = {
+    id?: SortOrder
+    count?: SortOrder
+  }
+
+  export type UserApiUsageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    method?: SortOrder
+    endpoint?: SortOrder
+    count?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserApiUsageMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    method?: SortOrder
+    endpoint?: SortOrder
+    count?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserApiUsageSumOrderByAggregateInput = {
+    id?: SortOrder
+    count?: SortOrder
+  }
+
   export type SessionCreateNestedManyWithoutUserInput = {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
@@ -6644,6 +9558,13 @@ export namespace Prisma {
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
     createMany?: AccountCreateManyUserInputEnvelope
     connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+  }
+
+  export type UserApiUsageCreateNestedManyWithoutUserInput = {
+    create?: XOR<UserApiUsageCreateWithoutUserInput, UserApiUsageUncheckedCreateWithoutUserInput> | UserApiUsageCreateWithoutUserInput[] | UserApiUsageUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserApiUsageCreateOrConnectWithoutUserInput | UserApiUsageCreateOrConnectWithoutUserInput[]
+    createMany?: UserApiUsageCreateManyUserInputEnvelope
+    connect?: UserApiUsageWhereUniqueInput | UserApiUsageWhereUniqueInput[]
   }
 
   export type SessionUncheckedCreateNestedManyWithoutUserInput = {
@@ -6660,6 +9581,13 @@ export namespace Prisma {
     connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
   }
 
+  export type UserApiUsageUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<UserApiUsageCreateWithoutUserInput, UserApiUsageUncheckedCreateWithoutUserInput> | UserApiUsageCreateWithoutUserInput[] | UserApiUsageUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserApiUsageCreateOrConnectWithoutUserInput | UserApiUsageCreateOrConnectWithoutUserInput[]
+    createMany?: UserApiUsageCreateManyUserInputEnvelope
+    connect?: UserApiUsageWhereUniqueInput | UserApiUsageWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -6670,6 +9598,14 @@ export namespace Prisma {
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -6704,6 +9640,20 @@ export namespace Prisma {
     deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
   }
 
+  export type UserApiUsageUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UserApiUsageCreateWithoutUserInput, UserApiUsageUncheckedCreateWithoutUserInput> | UserApiUsageCreateWithoutUserInput[] | UserApiUsageUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserApiUsageCreateOrConnectWithoutUserInput | UserApiUsageCreateOrConnectWithoutUserInput[]
+    upsert?: UserApiUsageUpsertWithWhereUniqueWithoutUserInput | UserApiUsageUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserApiUsageCreateManyUserInputEnvelope
+    set?: UserApiUsageWhereUniqueInput | UserApiUsageWhereUniqueInput[]
+    disconnect?: UserApiUsageWhereUniqueInput | UserApiUsageWhereUniqueInput[]
+    delete?: UserApiUsageWhereUniqueInput | UserApiUsageWhereUniqueInput[]
+    connect?: UserApiUsageWhereUniqueInput | UserApiUsageWhereUniqueInput[]
+    update?: UserApiUsageUpdateWithWhereUniqueWithoutUserInput | UserApiUsageUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UserApiUsageUpdateManyWithWhereWithoutUserInput | UserApiUsageUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UserApiUsageScalarWhereInput | UserApiUsageScalarWhereInput[]
+  }
+
   export type SessionUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
@@ -6730,6 +9680,20 @@ export namespace Prisma {
     update?: AccountUpdateWithWhereUniqueWithoutUserInput | AccountUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: AccountUpdateManyWithWhereWithoutUserInput | AccountUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
+  }
+
+  export type UserApiUsageUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UserApiUsageCreateWithoutUserInput, UserApiUsageUncheckedCreateWithoutUserInput> | UserApiUsageCreateWithoutUserInput[] | UserApiUsageUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserApiUsageCreateOrConnectWithoutUserInput | UserApiUsageCreateOrConnectWithoutUserInput[]
+    upsert?: UserApiUsageUpsertWithWhereUniqueWithoutUserInput | UserApiUsageUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserApiUsageCreateManyUserInputEnvelope
+    set?: UserApiUsageWhereUniqueInput | UserApiUsageWhereUniqueInput[]
+    disconnect?: UserApiUsageWhereUniqueInput | UserApiUsageWhereUniqueInput[]
+    delete?: UserApiUsageWhereUniqueInput | UserApiUsageWhereUniqueInput[]
+    connect?: UserApiUsageWhereUniqueInput | UserApiUsageWhereUniqueInput[]
+    update?: UserApiUsageUpdateWithWhereUniqueWithoutUserInput | UserApiUsageUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UserApiUsageUpdateManyWithWhereWithoutUserInput | UserApiUsageUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UserApiUsageScalarWhereInput | UserApiUsageScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutSessionsInput = {
@@ -6762,6 +9726,20 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutAccountsInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAccountsInput, UserUpdateWithoutAccountsInput>, UserUncheckedUpdateWithoutAccountsInput>
+  }
+
+  export type UserCreateNestedOneWithoutApiUsageInput = {
+    create?: XOR<UserCreateWithoutApiUsageInput, UserUncheckedCreateWithoutApiUsageInput>
+    connectOrCreate?: UserCreateOrConnectWithoutApiUsageInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutApiUsageNestedInput = {
+    create?: XOR<UserCreateWithoutApiUsageInput, UserUncheckedCreateWithoutApiUsageInput>
+    connectOrCreate?: UserCreateOrConnectWithoutApiUsageInput
+    upsert?: UserUpsertWithoutApiUsageInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutApiUsageInput, UserUpdateWithoutApiUsageInput>, UserUncheckedUpdateWithoutApiUsageInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -6797,6 +9775,17 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -6823,17 +9812,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -6870,6 +9848,33 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -6981,6 +9986,33 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type UserApiUsageCreateWithoutUserInput = {
+    method: string
+    endpoint: string
+    count?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserApiUsageUncheckedCreateWithoutUserInput = {
+    id?: number
+    method: string
+    endpoint: string
+    count?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserApiUsageCreateOrConnectWithoutUserInput = {
+    where: UserApiUsageWhereUniqueInput
+    create: XOR<UserApiUsageCreateWithoutUserInput, UserApiUsageUncheckedCreateWithoutUserInput>
+  }
+
+  export type UserApiUsageCreateManyUserInputEnvelope = {
+    data: UserApiUsageCreateManyUserInput | UserApiUsageCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type SessionUpsertWithWhereUniqueWithoutUserInput = {
     where: SessionWhereUniqueInput
     update: XOR<SessionUpdateWithoutUserInput, SessionUncheckedUpdateWithoutUserInput>
@@ -7046,15 +10078,47 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Account"> | Date | string
   }
 
+  export type UserApiUsageUpsertWithWhereUniqueWithoutUserInput = {
+    where: UserApiUsageWhereUniqueInput
+    update: XOR<UserApiUsageUpdateWithoutUserInput, UserApiUsageUncheckedUpdateWithoutUserInput>
+    create: XOR<UserApiUsageCreateWithoutUserInput, UserApiUsageUncheckedCreateWithoutUserInput>
+  }
+
+  export type UserApiUsageUpdateWithWhereUniqueWithoutUserInput = {
+    where: UserApiUsageWhereUniqueInput
+    data: XOR<UserApiUsageUpdateWithoutUserInput, UserApiUsageUncheckedUpdateWithoutUserInput>
+  }
+
+  export type UserApiUsageUpdateManyWithWhereWithoutUserInput = {
+    where: UserApiUsageScalarWhereInput
+    data: XOR<UserApiUsageUpdateManyMutationInput, UserApiUsageUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type UserApiUsageScalarWhereInput = {
+    AND?: UserApiUsageScalarWhereInput | UserApiUsageScalarWhereInput[]
+    OR?: UserApiUsageScalarWhereInput[]
+    NOT?: UserApiUsageScalarWhereInput | UserApiUsageScalarWhereInput[]
+    id?: IntFilter<"UserApiUsage"> | number
+    userId?: StringFilter<"UserApiUsage"> | string
+    method?: StringFilter<"UserApiUsage"> | string
+    endpoint?: StringFilter<"UserApiUsage"> | string
+    count?: IntFilter<"UserApiUsage"> | number
+    createdAt?: DateTimeFilter<"UserApiUsage"> | Date | string
+    updatedAt?: DateTimeFilter<"UserApiUsage"> | Date | string
+  }
+
   export type UserCreateWithoutSessionsInput = {
     id: string
     name: string
     email: string
     emailVerified?: boolean
     image?: string | null
+    role?: string
+    totalApiRequests?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
+    apiUsage?: UserApiUsageCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSessionsInput = {
@@ -7063,9 +10127,12 @@ export namespace Prisma {
     email: string
     emailVerified?: boolean
     image?: string | null
+    role?: string
+    totalApiRequests?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    apiUsage?: UserApiUsageUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSessionsInput = {
@@ -7090,9 +10157,12 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    totalApiRequests?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
+    apiUsage?: UserApiUsageUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -7101,9 +10171,12 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    totalApiRequests?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    apiUsage?: UserApiUsageUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutAccountsInput = {
@@ -7112,9 +10185,12 @@ export namespace Prisma {
     email: string
     emailVerified?: boolean
     image?: string | null
+    role?: string
+    totalApiRequests?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     sessions?: SessionCreateNestedManyWithoutUserInput
+    apiUsage?: UserApiUsageCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAccountsInput = {
@@ -7123,9 +10199,12 @@ export namespace Prisma {
     email: string
     emailVerified?: boolean
     image?: string | null
+    role?: string
+    totalApiRequests?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    apiUsage?: UserApiUsageUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -7150,9 +10229,12 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    totalApiRequests?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sessions?: SessionUpdateManyWithoutUserNestedInput
+    apiUsage?: UserApiUsageUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -7161,9 +10243,84 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    totalApiRequests?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    apiUsage?: UserApiUsageUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutApiUsageInput = {
+    id: string
+    name: string
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: string
+    totalApiRequests?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    accounts?: AccountCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutApiUsageInput = {
+    id: string
+    name: string
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: string
+    totalApiRequests?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutApiUsageInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutApiUsageInput, UserUncheckedCreateWithoutApiUsageInput>
+  }
+
+  export type UserUpsertWithoutApiUsageInput = {
+    update: XOR<UserUpdateWithoutApiUsageInput, UserUncheckedUpdateWithoutApiUsageInput>
+    create: XOR<UserCreateWithoutApiUsageInput, UserUncheckedCreateWithoutApiUsageInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutApiUsageInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutApiUsageInput, UserUncheckedUpdateWithoutApiUsageInput>
+  }
+
+  export type UserUpdateWithoutApiUsageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    totalApiRequests?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutApiUsageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    totalApiRequests?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type SessionCreateManyUserInput = {
@@ -7187,6 +10344,15 @@ export namespace Prisma {
     refreshTokenExpiresAt?: Date | string | null
     scope?: string | null
     password?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserApiUsageCreateManyUserInput = {
+    id?: number
+    method: string
+    endpoint: string
+    count?: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -7262,6 +10428,32 @@ export namespace Prisma {
     refreshTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     scope?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserApiUsageUpdateWithoutUserInput = {
+    method?: StringFieldUpdateOperationsInput | string
+    endpoint?: StringFieldUpdateOperationsInput | string
+    count?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserApiUsageUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    method?: StringFieldUpdateOperationsInput | string
+    endpoint?: StringFieldUpdateOperationsInput | string
+    count?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserApiUsageUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    method?: StringFieldUpdateOperationsInput | string
+    endpoint?: StringFieldUpdateOperationsInput | string
+    count?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

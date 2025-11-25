@@ -1,3 +1,4 @@
+// ChatGPT and Copoilot assisted with the proofreading and optimization of this code.
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
