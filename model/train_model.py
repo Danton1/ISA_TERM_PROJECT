@@ -20,6 +20,8 @@ torch.backends.cuda.matmul.allow_tf32 = True
 import datasets
 datasets.logging.set_verbosity_error()
 
+MAX_ROWS = 50000
+
 
 # ============================================================
 # CONFIGURATION
@@ -35,13 +37,18 @@ tok.pad_token = tok.eos_token
 tok.padding_side = "right"
 
 # 2️⃣ Load CSV dataset
-train_dataset = Dataset.load_from_disk(r"D:\gigsup\education_model\career_tokenized_combined")
+raw = pd.read_csv(r"D:\gigsup\education_model\career_skill_training.csv")
+train_dataset = Dataset.from_pandas(raw)
+#train_dataset = Dataset.load_from_disk(r"D:\gigsup\education_model\career_tokenized_combined")
 train_dataset = train_dataset.shuffle(seed=42)
+if len(train_dataset) > MAX_ROWS:
+    train_dataset = train_dataset.select(range(MAX_ROWS))
+    print(f"Dataset capped at {MAX_ROWS} rows")
 print(train_dataset.column_names)
 sample = train_dataset[0]
-print(len(sample["input_ids"]))
-print(len(sample["labels"]))
-print(sample["labels"][:50])
+# print(len(sample["input_ids"]))
+# print(len(sample["labels"]))
+# print(sample["labels"][:50])
 
 # print(f"Length of Training set: {len(dataset)}")
 
@@ -71,20 +78,31 @@ model.print_trainable_parameters()
 # 5️⃣ Training setup — no bitsandbytes
 args = TrainingArguments(
     output_dir=OUTPUT_DIR,
-    per_device_train_batch_size=4,
-    gradient_accumulation_steps=4,
+    per_device_train_batch_size=8,
+    gradient_accumulation_steps=2,
     learning_rate=2e-4,
-    num_train_epochs=2,
+    num_train_epochs=1,
     fp16=False,
     bf16=True,
     warmup_ratio=0.05,
     max_grad_norm=1.0,
     logging_steps=25,
     save_strategy="epoch",
-    save_total_limit=2,
+    save_total_limit=1,
     report_to="none",
     optim="adamw_torch",   # ✅ normal PyTorch AdamW
 )
+
+def format_row(row):
+    return [
+        f"<start_of_turn>user\n"
+        f"{row['instruction']}\n"
+        f"Skills: {row['input']}\n"
+        f"<end_of_turn>\n"
+        f"<start_of_turn>model\n"
+        f"{row['output']}\n"
+        f"<end_of_turn>"
+    ]
 
 # 6️⃣ Trainer
 trainer = SFTTrainer(
@@ -92,9 +110,14 @@ trainer = SFTTrainer(
     tokenizer=tok,
     train_dataset=train_dataset,
     args=args,
-    max_seq_length=160,
-    packing=True,
+    formatting_func=format_row,
+    dataset_text_field=None,
+    max_seq_length=256,
+    packing=False,
 )
+
+formatted = format_row(train_dataset[0])
+print(formatted[0])
 
 # 7️⃣ Train
 trainer.train()
